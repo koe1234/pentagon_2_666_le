@@ -170,17 +170,6 @@ component ram_cmos
 				);
 end component;
 
-component ram_textbuffer
-	port		(
-		clock								: IN  std_logic;
-		data								: IN  std_logic_vector(7 DOWNTO 0);
-		write_address							: IN  std_logic_vector(12 DOWNTO 0);
-		read_address							: IN  std_logic_vector(12 DOWNTO 0);
-		we								: IN  std_logic;
-		q								: OUT std_logic_vector(7 DOWNTO 0)
-				);
-end component;
-
 component ram_pollitra is
 	port		(
 		clock								: IN STD_LOGIC ;
