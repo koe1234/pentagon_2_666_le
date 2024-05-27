@@ -245,7 +245,7 @@ begin
 		end if;
 	end process;
 
-	process (Reset_s,CLK_n,WAIT_n,MReq_Inhibit,MREQ) -- koe исправил тайминги цикла M1 с тактами ожидания
+	process (Reset_s,CLK_n,WAIT_n,MReq_Inhibit,MREQ) -- koe: fixed M1 cycle timings with wait states
 	begin
 		if Reset_s = '0' or MREQ = '0' or MReq_Inhibit = '0' then
 			Req_Inhibit <= '0';
@@ -258,7 +258,7 @@ begin
 		end if;
 	end process;
 
-	process (Reset_s,CLK_n,WAIT_n,MREQ) -- koe исправил тайминги цикла M1 с тактами ожидания 
+	process (Reset_s,CLK_n,WAIT_n,MREQ) -- koe: fixed M1 cycle timings with wait states
 	begin
 		if Reset_s = '0' or MREQ = '0' then
 			MReq_Inhibit <= '0';
