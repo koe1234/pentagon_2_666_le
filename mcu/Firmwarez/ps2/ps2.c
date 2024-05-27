@@ -158,7 +158,7 @@ void mouse_transaction(void)
 {
 unsigned char read_data_bit;	
 
-	//!ps2_transmit_flag0 если 1, то передается в мышь, если 0, то читается из мыши
+	//!ps2_transmit_flag0: 1 => to mouse; 0 => from mouse
 	if (!ps2_transmit_flag0)
 	{
 		m_timeout=0;
@@ -178,7 +178,6 @@ unsigned char read_data_bit;
 	else
 	{
 		m_timeout=0;
-		// Смысл бита чётности - сделать так, чтобы кол-во единиц в посылке (с учётом этого бита) было чётным 	
 		if ((m_bit_counter==0) || (m_bit_counter==11)) read_bit; //read_data_bit = ~(FIO1PIN >> 28) & 1;
 		if ((!m_bit_counter) & read_data_bit) mouse_write_error = 1;
 		if ((m_bit_counter > 0) && (m_bit_counter < 9))
@@ -243,13 +242,13 @@ bool mouse_ok = 0;
 
 	mouse_ok = mouse_data_transmit(0xff);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
 	mouse_ok = mouse_data_transmit(0xff);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
 	mouse_ok = mouse_data_transmit(0xff);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
 	mouse_ok = mouse_data_transmit(0xf3);	
 	mouse_ok = mouse_data_transmit(0xc8);
 	mouse_ok = mouse_data_transmit(0xf3);
@@ -258,7 +257,7 @@ bool mouse_ok = 0;
 	mouse_ok = mouse_data_transmit(0x50);
 	mouse_ok = mouse_data_transmit(0xf2);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
 	if(mouse_last_data ==0x03) mouse_wheel = 1; 
 	else mouse_wheel = 0; 
 	mouse_ok = mouse_data_transmit(0xe6);
