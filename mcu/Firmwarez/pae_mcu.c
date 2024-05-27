@@ -446,15 +446,15 @@ unsigned int read, index;
 /////////////////////// interrupts ////////////////////////////////////
 void timer0_irq(void) __irq
 {
-// прерывани€ от таймера 0 - 50 √ц + событи€ ps2
-
+// 50 Hz interrupts + PS2 events interrupts
+	
 	if ((T0IR >> 4) & 1)
 	{
 		T0IR |= (1 << 4); timeout = 0; if(!keyboard_error) interrupt(~(FIO1PIN >> 23) & 1);
 	}
 	if ((T0IR >> 5) & 1) 
 	{
-		T0IR |= (1 << 5); mouse_transaction(); // прерывание от мышки
+		T0IR |= (1 << 5); mouse_transaction(); // mouse interrupt
 	} 
 	if (T0IR & 1) 
 	{
@@ -469,7 +469,7 @@ void timer0_irq(void) __irq
 
 void timer1_irq(void) __irq
 {
-// ѕрерывани€ от timer1 20 к√ц (50 мкс)
+// 20 kHz (50 us)
 static uint32_t div10;
 
 	led0_on(); led0_off();
