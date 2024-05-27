@@ -75,7 +75,7 @@ architecture RTL of YM2149 is
 begin
 
 
-  -- схватываем номер регистра ("адрес")
+  -- address latch
   p_waddr                : process(wr_addr, RESET_L)
   begin
     if (RESET_L = '0') then
@@ -85,7 +85,7 @@ begin
     end if;
   end process;
 
-  -- схватываем данные в выбранный регистр
+  -- data latch
   p_wdata                : process(wr_data, RESET_L, addr)
   begin
     if (RESET_L = '0') then
@@ -111,8 +111,7 @@ begin
         end case;
     end if;
 
--- здесь тоже я правил
-
+-- koe
     env_reset <= '0';
     if (wr_data = '0') and (addr(3 downto 0) = x"D") then
       env_reset <= '1';
