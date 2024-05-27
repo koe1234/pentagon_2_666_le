@@ -379,7 +379,7 @@ process (pixel_clock, hardware_reset, vg93_reset, read_addr_flag, vg93_cs, force
 begin
 if (hardware_reset = '0' or vg93_reset = '0' or force_interrupt_flag = '0') then radr_drq <= '0'; radr_nrd <= '1';
     elsif (read_addr_flag = '1') then radr_state(2 downto 0) <= b"110"; radr_flag0 <= '0'; radr_delay(6 downto 0) <= (others =>'1');  radr_intrq_flag <= '0'; radr_out_data(7 downto 0) <= b"00000000";
-            elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then radr_drq <= '0'; -- ñáðàñûâàåì drq ïðè ÷òåíèè äàííûõ
+            elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then radr_drq <= '0'; -- drq reset
             elsif (pixel_clock'event and pixel_clock = '1') then
                 if (radr_state(2 downto 0) = b"110") then radr_nrd <='0'; end if;
                 if (radr_delay(6 downto 0) > 0) then radr_delay(6 downto 0) <= radr_delay(6 downto 0) - '1'; end if;
