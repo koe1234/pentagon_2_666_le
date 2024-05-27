@@ -13,7 +13,7 @@ entity zx_main is
     gfx_mode            : in std_logic_vector(5 downto 0); --atm (5..3), pent (2..0)
     int_strobe          : out std_logic;
     int_delay           : in std_logic_vector(9 downto 0);
-	 ssii                : out std_logic;
+    ssii                : out std_logic;
     ksii                : out std_logic;
     vidr                : out std_logic_vector(4 downto 0);
     vidg                : out std_logic_vector(4 downto 0);
@@ -50,10 +50,10 @@ component ram_border
   port (
         clock           : IN  std_logic;
         data            : IN  std_logic_vector(3 DOWNTO 0);
-        write_address           : IN  std_logic_vector(8 DOWNTO 0);
-        read_address            : IN  std_logic_vector(8 DOWNTO 0);
-        we          : IN  std_logic;
-        q           : OUT std_logic_vector(3 DOWNTO 0)
+        write_address   : IN  std_logic_vector(8 DOWNTO 0);
+        read_address    : IN  std_logic_vector(8 DOWNTO 0);
+        we          	: IN  std_logic;
+        q           	: OUT std_logic_vector(3 DOWNTO 0)
     );
 end component;
 
@@ -62,7 +62,7 @@ component otmfnt_rom
     (
         address     : IN STD_LOGIC_VECTOR (10 DOWNTO 0);
         clock       : IN STD_LOGIC  := '1';
-        q       : OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
+        q           : OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
     );
 end component;
 
@@ -73,91 +73,91 @@ constant shadow_horizont			: natural:=120;
 constant shadow_vertical			: natural:=16;
 constant horizontal_size			: natural:=768;
 constant vertical_size				: natural:=608;
-constant screen_hor					: natural:=512;
-constant screen_vert					: natural:=384;
+constant screen_hor				: natural:=512;
+constant screen_vert				: natural:=384;
 constant ramka_ega_vert				: natural:=192;
 constant ramka_ega_goriz			: natural:=128;
-constant ssi_start					: natural:=891;
-constant ssi_stop						: natural:=38;
+constant ssi_start				: natural:=891;
+constant ssi_stop				: natural:=38;
 constant hor_blank_start			: natural:=849;
 constant hor_blank_stop				: natural:=73;
 
-signal	ym_counter					: std_logic_vector (4 downto 0):=b"00000";  
-signal	main_state					: std_logic_vector(3 downto 0):=b"0000";
+signal	ym_counter				: std_logic_vector (4 downto 0):=b"00000";  
+signal	main_state				: std_logic_vector(3 downto 0):=b"0000";
 signal	zx_screen_counter			: std_logic_vector(17 downto 0):=b"000000000000000000";
-signal	zx_screen_counter_low	: std_logic_vector(16 downto 0):=b"00000000000000000";
-signal	alco_addr					: std_logic_vector(2 downto 0);
+signal	zx_screen_counter_low			: std_logic_vector(16 downto 0):=b"00000000000000000";
+signal	alco_addr				: std_logic_vector(2 downto 0);
 signal	adr_zx_video_attr			: std_logic_vector(9 downto 0);
 signal	adr_zx_video_data			: std_logic_vector(12 downto 0);
-signal	pixel_c						: std_logic_vector(9 downto 0):=b"0000000000";
-signal	line_c						: std_logic_vector(9 downto 0):=b"0000000000";
-signal	multic_buf0_clk			: std_logic;
-signal	multic_buf0_data_in		: std_logic_vector(15 downto 0);
+signal	pixel_c					: std_logic_vector(9 downto 0):=b"0000000000";
+signal	line_c					: std_logic_vector(9 downto 0):=b"0000000000";
+signal	multic_buf0_clk				: std_logic;
+signal	multic_buf0_data_in			: std_logic_vector(15 downto 0);
 signal	multic_buf0_addr			: std_logic_vector(8 downto 0);
 signal	multic_buf0_we				: std_logic;
-signal	multic_buf0_data_out		: std_logic_vector(15 downto 0);
-signal	int_str						: std_logic;
-signal	multic_buf1_clk			: std_logic;
-signal	multic_buf1_data_in		: std_logic_vector(15 downto 0);
+signal	multic_buf0_data_out			: std_logic_vector(15 downto 0);
+signal	int_str					: std_logic;
+signal	multic_buf1_clk				: std_logic;
+signal	multic_buf1_data_in			: std_logic_vector(15 downto 0);
 signal	multic_buf1_addr			: std_logic_vector(8 downto 0);
 signal	multic_buf1_we				: std_logic;
-signal	multic_buf1_data_out		: std_logic_vector(15 downto 0);
+signal	multic_buf1_data_out			: std_logic_vector(15 downto 0);
 signal	goriz_border				: std_logic;
-signal	zx_goriz_border			: std_logic;
-signal	vert_border					: std_logic;
-signal	border_buf0_clk			: std_logic;
-signal	border_buf0_data_in		: std_logic_vector(15 downto 0);
+signal	zx_goriz_border				: std_logic;
+signal	vert_border				: std_logic;
+signal	border_buf0_clk				: std_logic;
+signal	border_buf0_data_in			: std_logic_vector(15 downto 0);
 signal	border_buf0_addr			: std_logic_vector(8 downto 0);
 signal	border_buf0_we				: std_logic;
-signal	border_buf0_data_out		: std_logic_vector(15 downto 0);
-signal	border_buf_addr			: std_logic_vector(8 downto 0);
-signal	border_buf1_clk			: std_logic;
-signal	border_buf1_data_in		: std_logic_vector(15 downto 0);
+signal	border_buf0_data_out			: std_logic_vector(15 downto 0);
+signal	border_buf_addr				: std_logic_vector(8 downto 0);
+signal	border_buf1_clk				: std_logic;
+signal	border_buf1_data_in			: std_logic_vector(15 downto 0);
 signal	border_buf1_addr			: std_logic_vector(8 downto 0);
 signal	border_buf1_we				: std_logic;
-signal	border_buf1_data_out		: std_logic_vector(15 downto 0);
+signal	border_buf1_data_out			: std_logic_vector(15 downto 0);
 signal	pixel_data_buffer			: std_logic_vector(7 downto 0);
-signal	pixel_data					: std_logic_vector(7 downto 0);
+signal	pixel_data				: std_logic_vector(7 downto 0);
 signal	attr_data_buffer			: std_logic_vector(7 downto 0);
-signal	attr_data					: std_logic_vector(7 downto 0);
+signal	attr_data				: std_logic_vector(7 downto 0);
 signal	mc_attr_data				: std_logic_vector(7 downto 0);
 signal	mc_pixel_data				: std_logic_vector(7 downto 0);
 signal	mc_future_data				: std_logic_vector(7 downto 0);
-signal	border_data					: std_logic_vector(3 downto 0);
-signal	border_delaybuffer		: std_logic_vector(3 downto 0);
-signal	border_c						: std_logic_vector(7 downto 0);
-signal	alco							: std_logic_vector(12 downto 0);
-signal	alco_buff					: std_logic_vector(7 downto 0);
-signal	alco_r						: std_logic;
-signal	alco_g						: std_logic;
-signal	alco_b						: std_logic;
-signal	alco_i						: std_logic;
+signal	border_data				: std_logic_vector(3 downto 0);
+signal	border_delaybuffer			: std_logic_vector(3 downto 0);
+signal	border_c				: std_logic_vector(7 downto 0);
+signal	alco					: std_logic_vector(12 downto 0);
+signal	alco_buff				: std_logic_vector(7 downto 0);
+signal	alco_r					: std_logic;
+signal	alco_g					: std_logic;
+signal	alco_b					: std_logic;
+signal	alco_i					: std_logic;
 signal	alco_hor_sdvig				: std_logic_vector(3 downto 0);
-signal	alco_vert_sdvig			: std_logic_vector(1 downto 0);
-signal	alco_sdvig					: std_logic_vector(7 downto 0);
-signal	igrb							: std_logic_vector(3 downto 0);
-signal	vblank						: std_logic;
-signal	ena_x							: std_logic;
-signal	ena_y							: std_logic;
-signal	border						: std_logic;
-signal	line_ega						: std_logic_vector(7 downto 0);
+signal	alco_vert_sdvig				: std_logic_vector(1 downto 0);
+signal	alco_sdvig				: std_logic_vector(7 downto 0);
+signal	igrb					: std_logic_vector(3 downto 0);
+signal	vblank					: std_logic;
+signal	ena_x					: std_logic;
+signal	ena_y					: std_logic;
+signal	border					: std_logic;
+signal	line_ega				: std_logic_vector(7 downto 0);
 signal	pixel_ega_vga				: std_logic_vector(9 downto 0); 
 signal	ega_adr_shift				: std_logic_vector(12 downto 0);
-signal	ega_adr_x					: std_logic_vector(5 downto 0);
+signal	ega_adr_x				: std_logic_vector(5 downto 0);
 signal	otm_text_mojno				: std_logic;
-signal	otm_fnt_out					: std_logic_vector(7 downto 0);
-signal	otm_txt						: std_logic_vector(7 downto 0);
-signal	otmtxt_attr					: std_logic_vector(7 downto 0);
-signal	otmtxt_addr_dobavka		: std_logic_vector(10 downto 0);
-signal	otmtxt_addr					: std_logic_vector(16 downto 0);
-signal	otm_fnt_clk					: std_logic;
+signal	otm_fnt_out				: std_logic_vector(7 downto 0);
+signal	otm_txt					: std_logic_vector(7 downto 0);
+signal	otmtxt_attr				: std_logic_vector(7 downto 0);
+signal	otmtxt_addr_dobavka			: std_logic_vector(10 downto 0);
+signal	otmtxt_addr				: std_logic_vector(16 downto 0);
+signal	otm_fnt_clk				: std_logic;
 signal	otm_fnt_addr				: std_logic_vector(10 downto 0);
-signal	otmtxt_symbol_code		: std_logic_vector(7 downto 0);
-signal	pixel_txt					: std_logic_vector(6 downto 0);
+signal	otmtxt_symbol_code			: std_logic_vector(7 downto 0);
+signal	pixel_txt				: std_logic_vector(6 downto 0);
 signal	pixel_data_strobe			: std_logic:='0'; -- for modelsim only
 signal	attr_data_strobe			: std_logic:='0'; -- for modelsim only
-signal	zx_s_c						: std_logic_vector(13 downto 0);
-signal	zx_pixel_c					: std_logic_vector(8 downto 0);
+signal	zx_s_c					: std_logic_vector(13 downto 0);
+signal	zx_pixel_c				: std_logic_vector(8 downto 0);
 
 begin
 
@@ -184,15 +184,13 @@ begin
 --                              \_______/ fpga delay
 --   cpu data strobe                    |-|____________________________ 
 --________________________________________/
--- zx_screen_counter: увеличивается на 1 каждые 4 такта pixel_clock (114 МГц
--- для P_a_E, соответствует частоте 114/4 = 28.5 МГц). Назначение разряов счетчика:
--- 0 - деление на 2 (удвоение изображения по строке, 512 VGA пикселей соответствуют
--- 256 Спектрумовским)
--- 1...3 - отсчитывает 8 элементов знакоместа по горизонтали
--- 4...8 - отсчитывает 32 знакоместа в одной строке
--- 9 - деление еще на 2 (удвоение количества строк, 384 элемента изображения VGA
--- соответствуют 192 Спектрумовским)
--- 10...17 - отсчитывает 192 строки
+--
+-- zx_screen_counter bits:
+-- 0 - x2 horizontal pixels, 512 VGA pixels => 256 ZX pixels
+-- 1...3 - 8 ZX pixels => 1 ZX symbol
+-- 4...8 - 32 symbols per line
+-- 9 - x2 vertical(384 VGA lines => 192 ZX lines)
+-- 10...17 - 192 lines
 
 process (pixel_clock, border, gfx_mode)
 begin
@@ -209,8 +207,8 @@ begin
         -- attributes address generation
         adr_zx_video_attr(9 downto 8) <= zx_screen_counter_low(15 downto 14);
         adr_zx_video_attr(7 downto 5) <= zx_screen_counter_low(13 downto 11);
-        adr_zx_video_attr(4 downto 0) <= zx_screen_counter_low(7 downto 3);  -- 9->5, а не 8->4 из-за буферирования строк
-			-- сдвиг алковского экрана по горизонтали на 5.5 точек вправо
+        adr_zx_video_attr(4 downto 0) <= zx_screen_counter_low(7 downto 3);
+			-- moving right 16c Alco screen by 5.5 ZX pixels
 			case (zx_screen_counter(3 downto 0)) is
             when b"0000" => alco_addr(1 downto 0) <= b"10";
             when b"0001" => alco_addr(1 downto 0) <= b"10";
@@ -230,10 +228,7 @@ begin
             when b"1111" => alco_addr(1 downto 0) <= b"10";
             when others => null;
         end case;
-        -- а вот так было бы без сдвига:
-        --alco_addr_not_shifted(1) <= zx_screen_counter(2);
-        --alco_addr_not_shifted(0) <= zx_screen_counter(3);
-        -- final video address generation
+	-- final video address generation
         if (zx_screen_counter(3 downto 0) = b"0000" and main_state(1 downto 0) = b"10")
             then video_address(9 downto 0) <= adr_zx_video_attr(9 downto 0); video_address(12 downto 10) <= b"110";
                 elsif (zx_screen_counter(3 downto 0) = b"0001" and main_state(1 downto 0) = b"10")
@@ -310,19 +305,18 @@ begin
         end if;
 
 		  case line_c(0) is
-				when '0' => border_buf_addr(8 downto 0) <= '0' & pixel_c(9 downto 2); 			-- от 0 до 223
-				when '1' => border_buf_addr(8 downto 0) <= b"011100000"+pixel_c(9 downto 2); 	-- от 224 до 447
+				when '0' => border_buf_addr(8 downto 0) <= '0' & pixel_c(9 downto 2); 		-- from 0 to 223
+				when '1' => border_buf_addr(8 downto 0) <= b"011100000"+pixel_c(9 downto 2); 	-- from 224 to 447
 				when others => null;
 		  end case;
 
-		  -- line_c(1) меняет значение через каждые 2 vga строки
-        if (line_c(1)='0') then -- buf0 - write; buf1 - read
+		  -- line_c(1) changes the value every 2 vga lines
+        	if (line_c(1)='0') then -- buf0 - write; buf1 - read
 			border_buf0_addr(8 downto 0) <= border_buf_addr(8 downto 0); 
 			border_buf1_addr(8 downto 0) <= pixel_c(9 downto 1) - 6;			
-			-- буфер на чтение	
 				
 				border_buf1_we <= '1';
-            border_buf0_we <= '0';
+            			border_buf0_we <= '0';
 				if (main_state(2) = '0') then border_delaybuffer(3 downto 0) <= border_buf1_data_out(3 downto 0); end if;
 	
 				multic_buf0_addr(8 downto 0) <= border_buf_addr(8 downto 0);
@@ -354,11 +348,11 @@ begin
             end if;
         elsif (zx_screen_counter(0) = '1') then pixel_data(7 downto 1) <= pixel_data(6 downto 0);
         end if;
-        -- сдвиг алковского экрана на одну строку вниз относительного спектрумовского
+        -- moving down 16c Alco screen by 1 line
         if (zx_screen_counter(9 downto 0)) = b"1111111111" then
             alco_sdvig(7 downto 0) <= (zx_screen_counter(17 downto 16) & zx_screen_counter(12 downto 10) &  zx_screen_counter(15 downto 13));
         end if;
-        -- учет сделанного сдвига алкоэкрана по горизонтали при вертикальном сдвиге (+ еще задержка на 6 точек)
+        -- accounting the horizontal shift of the 16c Alco screen with a vertical shift (+ another delay of 6 pixels)
         if (zx_screen_counter(3 downto 0) = b"1010") then 
             alco(12 downto 5) <= alco_sdvig(7 downto 0);
             alco(4 downto 0) <= zx_screen_counter(8 downto 4); 
@@ -426,7 +420,7 @@ begin
         end if;
     
     -----------------------------------------------------------------------------
-    -- ОТМ текстмод
+    -- ATM textmode
     -----------------------------------------------------------------------------
     
         if (pixel_c > 127 and pixel_c < 769 and line_c > 61 and line_c < 576)
@@ -448,25 +442,21 @@ begin
         end if; 
    
     end if; 
-    
-    ------------------------------------------------------------------------------
-    -- ОТМ текстмод (продолжение)
-    ------------------------------------------------------------------------------
-    
+	    
             case (main_state(1 downto 0)) is
                 when b"00" =>   otm_fnt_clk <= '0'; 
                 when b"10" =>
                                     if(pixel_c(3)='1') -- zx_screen_counter(3)
                                         then 
                                             case (zx_screen_counter(1 downto 0)) is
-                                                when b"00" => otmtxt_addr(16 downto 0) <= b"001" & (pixel_txt(6 downto 1) - b"1000" + b"00000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- нечетный столбец атрибуты
-                                                when b"01" => otmtxt_addr(16 downto 0) <= b"101" & (pixel_txt(6 downto 1) - b"1000" + b"00000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- четный столбец данные
+                                                when b"00" => otmtxt_addr(16 downto 0) <= b"001" & (pixel_txt(6 downto 1) - b"1000" + b"00000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- odd column attributes
+                                                when b"01" => otmtxt_addr(16 downto 0) <= b"101" & (pixel_txt(6 downto 1) - b"1000" + b"00000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- even column data
                                                 when others => null;
                                             end case;
                                         else 
                                             case (zx_screen_counter(1 downto 0)) is
-                                                when b"00" => otmtxt_addr(16 downto 0) <= b"001" & (pixel_txt(6 downto 1) - b"1000" + b"10000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- четный столбец атрибуты
-                                                when b"01" => otmtxt_addr(16 downto 0) <= b"101" & (pixel_txt(6 downto 1) - b"1000" + b"10000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- нечетный столбец данные
+                                                when b"00" => otmtxt_addr(16 downto 0) <= b"001" & (pixel_txt(6 downto 1) - b"1000" + b"10000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- even column attributes
+                                                when b"01" => otmtxt_addr(16 downto 0) <= b"101" & (pixel_txt(6 downto 1) - b"1000" + b"10000111000000" + otmtxt_addr_dobavka(10 downto 0)); -- odd column data
                                                 when others => null;
                                             end case;
                                     end if;                     
@@ -530,18 +520,18 @@ begin
                         else goriz_border <= '0';
                     end if;
                 
-                when others => --zx рамка
+                when others => --zx Г°Г Г¬ГЄГ 
                     if (line_c < ((vertical_pixels-screen_vert)/2)+0+2) or (line_c > ((vertical_pixels-(vertical_pixels-screen_vert)/2)+0+1))
                         then vert_border <= '1';
                         else vert_border <='0';
                     end if;
 
                     if ((pixel_c < (((horizontal_pixels-screen_hor)/2)+1)) or (pixel_c > (horizontal_pixels-(horizontal_pixels-screen_hor)/2)))
-                        then goriz_border <= '1'; -- рамка по горизонтали для VGA экрана
+                        then goriz_border <= '1'; -- horizontal VGA border
                         else goriz_border <= '0';
                     end if;
                     if ((border_buf_addr < 88) or (border_buf_addr > 351)) 
-								then zx_goriz_border <= '1'; -- рамка по горизонтали для ZX экрана 
+								then zx_goriz_border <= '1'; -- horizontal ZX border
 								else zx_goriz_border <= '0';
 						  end if;
             end case;
