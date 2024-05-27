@@ -13,19 +13,19 @@ use work.all;
 
 entity PaE is
 	port (
-		clk									: in std_logic;								
-		r_adr									: out std_logic_vector(18 downto 0);	
+		clk								: in std_logic;								
+		r_adr								: out std_logic_vector(18 downto 0);	
 		blk0_d								: inout std_logic_vector(7 downto 0);	
 		blk1_d								: inout std_logic_vector(7 downto 0);	
-		snd									: inout std_logic_vector(7 downto 0);
-		str_r									: out std_logic;
-		str_l									: out std_logic;
+		snd								: inout std_logic_vector(7 downto 0);
+		str_r								: out std_logic;
+		str_l								: out std_logic;
 		svetodiod							: out std_logic;								
-		ssi									: out std_logic;
-		ksi									: out std_logic;
-		vid_r									: out std_logic_vector(4 downto 0);
-		vid_g									: out std_logic_vector(4 downto 0);
-		vid_b									: out std_logic_vector(4 downto 0);
+		ssi								: out std_logic;
+		ksi								: out std_logic;
+		vid_r								: out std_logic_vector(4 downto 0);
+		vid_g								: out std_logic_vector(4 downto 0);
+		vid_b								: out std_logic_vector(4 downto 0);
 		we_blk0chp0							: out std_logic;
 		oe_blk0chp0							: out std_logic;
 		we_blk0chp1							: out std_logic;
@@ -36,44 +36,44 @@ entity PaE is
 		oe_blk1chp1							: out std_logic;
 		i2c_scl								: in std_logic;
 		i2c_sda								: inout std_logic:='Z';
-		fpga_clk_output					: out std_logic;
-		fpga_mreq_output					: out std_logic;
-		fpga_rfsh_output					: out std_logic;
-		fpga_wr_output						: out std_logic;
-		fpga_iorq_output					: out std_logic;
-		fpga_halt_output					: out std_logic;
-		fpga_busack_output				: out std_logic;
-		fpga_m1_output						: out std_logic;
-		fpga_rd_output						: out std_logic;
-		fpga_dos_output					: out std_logic;
-		fpga_f_output						: out std_logic;
-		fpga_int_output					: out std_logic;
-		fpga_csr_output					: out std_logic;
-		fpga_rs_output						: out std_logic;
+		fpga_clk_output							: out std_logic;
+		fpga_mreq_output						: out std_logic;
+		fpga_rfsh_output						: out std_logic;
+		fpga_wr_output							: out std_logic;
+		fpga_iorq_output						: out std_logic;
+		fpga_halt_output						: out std_logic;
+		fpga_busack_output						: out std_logic;
+		fpga_m1_output							: out std_logic;
+		fpga_rd_output							: out std_logic;
+		fpga_dos_output							: out std_logic;
+		fpga_f_output							: out std_logic;
+		fpga_int_output							: out std_logic;
+		fpga_csr_output							: out std_logic;
+		fpga_rs_output							: out std_logic;
 		fpga_rs_in							: in std_logic;
-		fpga_rdrom_input					: in std_logic;
-		fpga_nmi_input						: in std_logic;
-		fpga_busrq_input					: in std_logic;
-		fpga_res_input						: in std_logic;
-		fpga_wait_input					: in std_logic;
-		fpga_int_input						: in std_logic;
+		fpga_rdrom_input						: in std_logic;
+		fpga_nmi_input							: in std_logic;
+		fpga_busrq_input						: in std_logic;
+		fpga_res_input							: in std_logic;
+		fpga_wait_input							: in std_logic;
+		fpga_int_input							: in std_logic;
 		zetneg_oe							: out std_logic;
 		dbusoe								: out std_logic;
-		fpga_dir								: out std_logic;
+		fpga_dir							: out std_logic;
 		fpga_a								: out std_logic_vector(15 downto 0);
 		fpga_d								: inout std_logic_vector(7 downto 0);
-		fpga_io0								: in std_logic;
-		fpga_io1								: in std_logic;
-		fpga_io2								: in std_logic;
-		fpga_ebl								: out std_logic;
-		fpga_ior								: out std_logic;
-		fpga_iow								: out std_logic;
-		fpga_wrh								: out std_logic;
-		fpga_rdh								: out std_logic;
+		fpga_io0							: in std_logic;
+		fpga_io1							: in std_logic;
+		fpga_io2							: in std_logic;
+		fpga_ebl							: out std_logic;
+		fpga_ior							: out std_logic;
+		fpga_iow							: out std_logic;
+		fpga_wrh							: out std_logic;
+		fpga_rdh							: out std_logic;
 		sd_clk								: out std_logic;
 		sd_dataout							: inout std_logic;
 		sd_datain							: in std_logic;
-		sd_cs									: out std_logic       
+		sd_cs								: out std_logic       
     );
     
 end PaE;
@@ -86,471 +86,471 @@ component zx_main is
 	port (
 		pixel_clock							: in  std_logic;
 		ym_clk								: out std_logic;
-		main_state_counter				: out std_logic_vector(1 downto 0);
+		main_state_counter						: out std_logic_vector(1 downto 0);
 		blk0_d								: in std_logic_vector(7 downto 0);
 		portfe								: in std_logic_vector(3 downto 0);
-		gfx_mode								: in std_logic_vector(5 downto 0);
+		gfx_mode							: in std_logic_vector(5 downto 0);
 		int_strobe							: out std_logic;
 		int_delay							: in std_logic_vector(9 downto 0);
-		ssii									: out std_logic;
-		ksii									: out std_logic;
-		vidr									: out std_logic_vector(4 downto 0);
-		vidg									: out std_logic_vector(4 downto 0);
-		vidb									: out std_logic_vector(4 downto 0);
+		ssii								: out std_logic;
+		ksii								: out std_logic;
+		vidr								: out std_logic_vector(4 downto 0);
+		vidg								: out std_logic_vector(4 downto 0);
+		vidb								: out std_logic_vector(4 downto 0);
 		pixelc								: out std_logic_vector(9 downto 0);
-		linec									: out std_logic_vector(9 downto 0);
-		flash									: in std_logic;
-		video_address						: out std_logic_vector(12 downto 0);
-		alco_address						: out std_logic_vector(14 downto 0);
+		linec								: out std_logic_vector(9 downto 0);
+		flash								: in std_logic;
+		video_address							: out std_logic_vector(12 downto 0);
+		alco_address							: out std_logic_vector(14 downto 0);
 		pollitra_a							: out std_logic_vector(3 downto 0);
-		pollitra_awr						: out std_logic_vector(3 downto 0);
+		pollitra_awr							: out std_logic_vector(3 downto 0);
 		pollitra_d							: in std_logic_vector(15 downto 0);
 		border3								: in std_logic;
 		ega_address							: out std_logic_vector(12 downto 0);
-		otmtxt_address						: out std_logic_vector(16 downto 0)
+		otmtxt_address							: out std_logic_vector(16 downto 0)
 );
 end component;
 
 component pll1 is
 	port	(
 		inclk0								: IN STD_LOGIC  := '0';
-		c0										: OUT STD_LOGIC;
-		c1										: OUT STD_LOGIC 	
+		c0								: OUT STD_LOGIC;
+		c1								: OUT STD_LOGIC 	
 			);
 end component;
 
 component T80a
 port		(
 		RESET_n								: in std_logic;
-		CLK_n									: in std_logic;
+		CLK_n								: in std_logic;
 		WAIT_n								: in std_logic;
-		INT_n									: in std_logic;
-		NMI_n									: in std_logic;
+		INT_n								: in std_logic;
+		NMI_n								: in std_logic;
 		BUSRQ_n								: in std_logic;
-		M1_n									: out std_logic;
+		M1_n								: out std_logic;
 		MREQ_n								: out std_logic;
 		IORQ_n								: out std_logic;
-		RD_n									: out std_logic;
-		WR_n									: out std_logic;
+		RD_n								: out std_logic;
+		WR_n								: out std_logic;
 		RFSH_n								: out std_logic;
 		HALT_n								: out std_logic;
 		BUSAK_n								: out std_logic;
-		A										: out std_logic_vector(15 downto 0);
-		D										: inout std_logic_vector(7 downto 0);
+		A								: out std_logic_vector(15 downto 0);
+		D								: inout std_logic_vector(7 downto 0);
 		IOcycle								: out std_logic;
-		MEMcycle								: out std_logic
+		MEMcycle							: out std_logic
 		);
 end component;
 
 component ym2149
 	port		(
-		I_DA									: in  std_logic_vector(7 downto 0);
-		O_DA									: out std_logic_vector(7 downto 0);
+		I_DA								: in  std_logic_vector(7 downto 0);
+		O_DA								: out std_logic_vector(7 downto 0);
 		output								: out std_logic_vector(7 downto 0);
-		strobe_a								: out std_logic;
-		strobe_b								: out std_logic;
-		strobe_c								: out std_logic; 
+		strobe_a							: out std_logic;
+		strobe_b							: out std_logic;
+		strobe_c							: out std_logic; 
 		RESET_L								: in  std_logic;
-		CLK									: in std_logic;  -- note 6 Mhz
+		CLK								: in std_logic;  -- note 6 Mhz
 		wr_addr								: in std_logic;
 		wr_data								: in std_logic;
 		rd_data								: in std_logic;
-		state									: out std_logic_vector(1 downto 0)
+		state								: out std_logic_vector(1 downto 0)
 				);
 end component;
 
 component ram_cmos
 	port		(
-		clock									: IN  std_logic;
-		data									: IN  std_logic_vector(7 DOWNTO 0);
-		write_address						: IN  std_logic_vector(7 DOWNTO 0);
-		read_address						: IN  std_logic_vector(7 DOWNTO 0);
-		we										: IN  std_logic;
-		q										: OUT std_logic_vector(7 DOWNTO 0)
+		clock								: IN  std_logic;
+		data								: IN  std_logic_vector(7 DOWNTO 0);
+		write_address							: IN  std_logic_vector(7 DOWNTO 0);
+		read_address							: IN  std_logic_vector(7 DOWNTO 0);
+		we								: IN  std_logic;
+		q								: OUT std_logic_vector(7 DOWNTO 0)
 				);
 end component;
 
 component ram_textbuffer
 	port		(
-		clock									: IN  std_logic;
-		data									: IN  std_logic_vector(7 DOWNTO 0);
-		write_address						: IN  std_logic_vector(12 DOWNTO 0);
-		read_address						: IN  std_logic_vector(12 DOWNTO 0);
-		we										: IN  std_logic;
-		q										: OUT std_logic_vector(7 DOWNTO 0)
+		clock								: IN  std_logic;
+		data								: IN  std_logic_vector(7 DOWNTO 0);
+		write_address							: IN  std_logic_vector(12 DOWNTO 0);
+		read_address							: IN  std_logic_vector(12 DOWNTO 0);
+		we								: IN  std_logic;
+		q								: OUT std_logic_vector(7 DOWNTO 0)
 				);
 end component;
 
 component ram_pollitra is
 	port		(
-		clock									: IN STD_LOGIC ;
-		data									: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		clock								: IN STD_LOGIC ;
+		data								: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
 		rdaddress							: IN STD_LOGIC_VECTOR (3 DOWNTO 0);
 		wraddress							: IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-		wren									: IN STD_LOGIC  := '1';
-		q										: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+		wren								: IN STD_LOGIC  := '1';
+		q								: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
 				);
 end component;
 
 component rom_pollitra is
 	port		(
 		address								: IN STD_LOGIC_VECTOR (4 DOWNTO 0);
-		clock									: IN STD_LOGIC ;
-		q										: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+		clock								: IN STD_LOGIC ;
+		q								: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
 				);
 end component;
 
 component bdi is
 	port		(
 		vg93_cs								: in std_logic;
-		vg93_ram_addr						: out std_logic_vector(19 downto 0);
-		betadisk_transfer					: in std_logic := '1';
-		write_byte_n						: out std_logic_vector(7 downto 0);
-		write_sector_n						: out std_logic_vector(7 downto 0);
-		read_sector_n						: out std_logic_vector(7 downto 0);
+		vg93_ram_addr							: out std_logic_vector(19 downto 0);
+		betadisk_transfer						: in std_logic := '1';
+		write_byte_n							: out std_logic_vector(7 downto 0);
+		write_sector_n							: out std_logic_vector(7 downto 0);
+		read_sector_n							: out std_logic_vector(7 downto 0);
 		read_byte_n							: out std_logic_vector(7 downto 0);
 		track_f								: out std_logic;
-		sector_f								: out std_logic;
+		sector_f							: out std_logic;
 		restore_f							: out std_logic;
 		vg93_O_data							: out std_logic_vector(7 downto 0);
-		force_interrupt_f					: out std_logic;
+		force_interrupt_f						: out std_logic;
 		track_pos							: out std_logic_vector(7 downto 0);
 		track_r								: out std_logic_vector(7 downto 0);
-		sector_r								: out std_logic_vector(7 downto 0);
-		status_r								: out std_logic_vector(7 downto 0);
+		sector_r							: out std_logic_vector(7 downto 0);
+		status_r							: out std_logic_vector(7 downto 0);
 		betadisk_r							: in std_logic_vector(7 downto 0);
 		vg93intrq							: out std_logic;
 		seek_f								: out std_logic;
 		vg93drq								: out std_logic;
 		step_f								: out std_logic;
-		step_dir								: out std_logic;
+		step_dir							: out std_logic;
 		read_addr_f							: out std_logic;
 		read_f								: out std_logic;
 		write_f								: out std_logic;
-		vg93_data_from_r					: out std_logic_vector(7 downto 0);
+		vg93_data_from_r						: out std_logic_vector(7 downto 0);
 		vg_tormoz							: in std_logic;
 		read_t								: out std_logic;
 		write_t								: out std_logic;
 		cpu_rd								: in std_logic;
 		cpu_wr								: in std_logic;
-		cpu_a									: in std_logic_vector(15 downto 0);
-		cpu_d									: in std_logic_vector(7 downto 0);
+		cpu_a								: in std_logic_vector(15 downto 0);
+		cpu_d								: in std_logic_vector(7 downto 0);
 		pixel_clock							: in std_logic;
-		hardware_reset						: in std_logic;
-		vg93_data_for_cpu_o				: out std_logic_vector(7 downto 0);
-		vg93_data_for_r					: out std_logic_vector(7 downto 0);
-		index									: out std_logic    
+		hardware_reset							: in std_logic;
+		vg93_data_for_cpu_o						: out std_logic_vector(7 downto 0);
+		vg93_data_for_r							: out std_logic_vector(7 downto 0);
+		index								: out std_logic    
 				);
 end component;
 
-signal	main_state_counter			: std_logic_vector(1 downto 0);
-signal	radr								: std_logic_vector(18 downto 0);
-signal	video_address					: std_logic_vector(12 downto 0);
-signal	alco_address					: std_logic_vector(14 downto 0);
-signal 	ega_address						: std_logic_vector(12 downto 0);
-signal 	ram_blk							: std_logic;
-signal 	pollitra_data_in				: std_logic_vector (15 downto 0);
-signal 	pollitra_rdaddress			: std_logic_vector (3 downto 0);
-signal 	pollitra_wraddress			: std_logic_vector (3 downto 0);
-signal 	pollitra_data_out				: std_logic_vector (15 downto 0);
-signal 	pollitra_a						: std_logic_vector(3 downto 0);
-signal 	pollitra_awr					: std_logic_vector(3 downto 0);
-signal 	pollitra_flag0					: std_logic;
-signal	pollitra_flag1					: std_logic;
-signal	pollitra_strobe				: std_logic;
-signal	border3							: std_logic;
-signal	weblk0chp0						: std_logic;
-signal	oeblk0chp0						: std_logic;
-signal	weblk0chp1						: std_logic;
-signal	oeblk0chp1						: std_logic;
-signal	weblk1chp0						: std_logic;
-signal	oeblk1chp0						: std_logic;
-signal	weblk1chp1						: std_logic;
-signal	oeblk1chp1						: std_logic;
-signal	z80_full_adr					: std_logic_vector(20 downto 0);
-signal	mcu_full_adr					: std_logic_vector(20 downto 0);
-signal	video_full_adr					: std_logic_vector(20 downto 0);
-signal	full_adr							: std_logic_vector(20 downto 0);
-signal	ram_outdata						: std_logic_vector(7 downto 0);
-signal	we_enable						: std_logic;
-signal	command_from_mcu				: std_logic_vector(6 downto 0);
-signal	data_from_mcu					: std_logic_vector(7 downto 0);
-signal	counter							: std_logic_vector(29 downto 0);
-signal	pixel_clock						: std_logic; 
-signal	shifted_clock					: std_logic;
-signal	ssii				            : std_logic;
-signal	ksii								: std_logic;
-signal	pixel_c							: std_logic_vector(9 downto 0);
-signal	line_c							: std_logic_vector(9 downto 0);
-signal	upload_adr						: std_logic_vector(13 downto 0);
-signal	download_adr					: std_logic_vector(14 downto 0);
-signal	upload							: std_logic;
-signal	upload_in_process				: std_logic;
-signal	svetodiod_on					: std_logic;
-signal	svetodiod_off					: std_logic;
-signal	ena								: std_logic;
-signal	download							: std_logic;
-signal	download_in_process			: std_logic;
-signal	download_strobe				: std_logic;
-signal	mcu_in_data						: std_logic_vector(7 downto 0);
-signal	hardware_reset					: std_logic;
-signal	page_number						: std_logic_vector(7 downto 0);
-signal	pagenum							: std_logic;
-signal	idle								: std_logic;
-signal	z80_to_ram						: std_logic;
-signal	cmd07								: std_logic;
-signal	to_vz80_data					: std_logic_vector(7 downto 0);
-signal	cmd05								: std_logic;
-signal	portfe							: std_logic_vector(7 downto 0) := (others => '1');
-signal	cmd02								: std_logic;
-signal	keymatrix0						: std_logic_vector(7 downto 0):=b"11111111";
-signal	keymatrix1						: std_logic_vector(7 downto 0):=b"11111111";
-signal	keymatrix2						: std_logic_vector(7 downto 0):=b"11111111";
-signal	keymatrix3						: std_logic_vector(7 downto 0):=b"11111111";
-signal	keymatrix4						: std_logic_vector(7 downto 0):=b"11111111";
-signal	key_byte_number				: std_logic_vector(6 downto 0);
-signal	port7ffd							: std_logic_vector(7 downto 0);
-signal	port7ffdadd						: std_logic_vector(7 downto 0);
-signal	atmwindow						: std_logic_vector(2 downto 0);
-signal	atmpage							: std_logic_vector(9 downto 0);
-signal	rampage							: std_logic_vector(6 downto 0);
-signal	porteff7							: std_logic_vector(7 downto 0);
-signal	portxx77							: std_logic_vector(7 downto 0);
-signal	portbf							: std_logic_vector(7 downto 0):=b"00000000"; --Savelij
-signal	cpu3_0							: std_logic_vector(9 downto 0);
-signal	cpu3_1							: std_logic_vector(9 downto 0);
-signal	cpu2_0							: std_logic_vector(9 downto 0);
-signal	cpu2_1							: std_logic_vector(9 downto 0);
-signal	cpu1_0							: std_logic_vector(9 downto 0);
-signal	cpu1_1							: std_logic_vector(9 downto 0);
-signal	cpu0_0							: std_logic_vector(9 downto 0);
-signal	cpu0_1							: std_logic_vector(9 downto 0);
-signal	cpm								: std_logic:='1'; --Savelij
-signal	pen2								: std_logic;
-signal	rom_page							: std_logic_vector(1 downto 0);
-signal	rom								: std_logic;
-signal	romram							: std_logic;
-signal	ram_from_c000					: std_logic;
-signal	dosen								: std_logic:='1'; --3dxx etc --Savelij
-signal	dos								: std_logic:='1'; --from dosen and cp/m --Savelij
-signal	fpgadir							: std_logic;
-signal	z80_reset_from_mcu			: std_logic;
-signal	ioycle							: std_logic;
-signal	cpu_iowr							: std_logic;
-signal	cpu_iord							: std_logic;
-signal	klovetura						: std_logic_vector(7 downto 0);
-signal	romadr14							: std_logic;
-signal	cpu_memrd						: std_logic;
-signal	cpu_memwr						: std_logic;
+signal	main_state_counter							: std_logic_vector(1 downto 0);
+signal	radr									: std_logic_vector(18 downto 0);
+signal	video_address								: std_logic_vector(12 downto 0);
+signal	alco_address								: std_logic_vector(14 downto 0);
+signal 	ega_address								: std_logic_vector(12 downto 0);
+signal 	ram_blk									: std_logic;
+signal 	pollitra_data_in							: std_logic_vector (15 downto 0);
+signal 	pollitra_rdaddress							: std_logic_vector (3 downto 0);
+signal 	pollitra_wraddress							: std_logic_vector (3 downto 0);
+signal 	pollitra_data_out							: std_logic_vector (15 downto 0);
+signal 	pollitra_a								: std_logic_vector(3 downto 0);
+signal 	pollitra_awr								: std_logic_vector(3 downto 0);
+signal 	pollitra_flag0								: std_logic;
+signal	pollitra_flag1								: std_logic;
+signal	pollitra_strobe								: std_logic;
+signal	border3									: std_logic;
+signal	weblk0chp0								: std_logic;
+signal	oeblk0chp0								: std_logic;
+signal	weblk0chp1								: std_logic;
+signal	oeblk0chp1								: std_logic;
+signal	weblk1chp0								: std_logic;
+signal	oeblk1chp0								: std_logic;
+signal	weblk1chp1								: std_logic;
+signal	oeblk1chp1								: std_logic;
+signal	z80_full_adr								: std_logic_vector(20 downto 0);
+signal	mcu_full_adr								: std_logic_vector(20 downto 0);
+signal	video_full_adr								: std_logic_vector(20 downto 0);
+signal	full_adr								: std_logic_vector(20 downto 0);
+signal	ram_outdata								: std_logic_vector(7 downto 0);
+signal	we_enable								: std_logic;
+signal	command_from_mcu							: std_logic_vector(6 downto 0);
+signal	data_from_mcu								: std_logic_vector(7 downto 0);
+signal	counter									: std_logic_vector(29 downto 0);
+signal	pixel_clock								: std_logic; 
+signal	shifted_clock								: std_logic;
+signal	ssii				            				: std_logic;
+signal	ksii									: std_logic;
+signal	pixel_c									: std_logic_vector(9 downto 0);
+signal	line_c									: std_logic_vector(9 downto 0);
+signal	upload_adr								: std_logic_vector(13 downto 0);
+signal	download_adr								: std_logic_vector(14 downto 0);
+signal	upload									: std_logic;
+signal	upload_in_process							: std_logic;
+signal	svetodiod_on								: std_logic;
+signal	svetodiod_off								: std_logic;
+signal	ena									: std_logic;
+signal	download								: std_logic;
+signal	download_in_process							: std_logic;
+signal	download_strobe								: std_logic;
+signal	mcu_in_data								: std_logic_vector(7 downto 0);
+signal	hardware_reset								: std_logic;
+signal	page_number								: std_logic_vector(7 downto 0);
+signal	pagenum									: std_logic;
+signal	idle									: std_logic;
+signal	z80_to_ram								: std_logic;
+signal	cmd07									: std_logic;
+signal	to_vz80_data								: std_logic_vector(7 downto 0);
+signal	cmd05									: std_logic;
+signal	portfe									: std_logic_vector(7 downto 0) := (others => '1');
+signal	cmd02									: std_logic;
+signal	keymatrix0								: std_logic_vector(7 downto 0):=b"11111111";
+signal	keymatrix1								: std_logic_vector(7 downto 0):=b"11111111";
+signal	keymatrix2								: std_logic_vector(7 downto 0):=b"11111111";
+signal	keymatrix3								: std_logic_vector(7 downto 0):=b"11111111";
+signal	keymatrix4								: std_logic_vector(7 downto 0):=b"11111111";
+signal	key_byte_number								: std_logic_vector(6 downto 0);
+signal	port7ffd								: std_logic_vector(7 downto 0);
+signal	port7ffdadd								: std_logic_vector(7 downto 0);
+signal	atmwindow								: std_logic_vector(2 downto 0);
+signal	atmpage									: std_logic_vector(9 downto 0);
+signal	rampage									: std_logic_vector(6 downto 0);
+signal	porteff7								: std_logic_vector(7 downto 0);
+signal	portxx77								: std_logic_vector(7 downto 0);
+signal	portbf									: std_logic_vector(7 downto 0):=b"00000000"; --Savelij
+signal	cpu3_0									: std_logic_vector(9 downto 0);
+signal	cpu3_1									: std_logic_vector(9 downto 0);
+signal	cpu2_0									: std_logic_vector(9 downto 0);
+signal	cpu2_1									: std_logic_vector(9 downto 0);
+signal	cpu1_0									: std_logic_vector(9 downto 0);
+signal	cpu1_1									: std_logic_vector(9 downto 0);
+signal	cpu0_0									: std_logic_vector(9 downto 0);
+signal	cpu0_1									: std_logic_vector(9 downto 0);
+signal	cpm									: std_logic:='1'; --Savelij
+signal	pen2									: std_logic;
+signal	rom_page								: std_logic_vector(1 downto 0);
+signal	rom									: std_logic;
+signal	romram									: std_logic;
+signal	ram_from_c000								: std_logic;
+signal	dosen									: std_logic:='1'; --3dxx etc --Savelij
+signal	dos									: std_logic:='1'; --from dosen and cp/m --Savelij
+signal	fpgadir									: std_logic;
+signal	z80_reset_from_mcu							: std_logic;
+signal	ioycle									: std_logic;
+signal	cpu_iowr								: std_logic;
+signal	cpu_iord								: std_logic;
+signal	klovetura								: std_logic_vector(7 downto 0);
+signal	romadr14								: std_logic;
+signal	cpu_memrd								: std_logic;
+signal	cpu_memwr								: std_logic;
 signal	m1									: std_logic;
-signal	iorq_after_bus					: std_logic;
-signal	read_ports						: std_logic;
-signal	precounter						: std_logic_vector(4 downto 0);
-signal	cpu_we_enable_res				: std_logic;
-signal	cpu_we_enable					: std_logic;
-signal	weblk								: std_logic;
-signal	int_strobe						: std_logic;
-signal	i2c_scl_b						: std_logic;
-signal	i2c_sda_b						: std_logic;
-signal	i2c_bit_counter				: std_logic_vector(3 downto 0);
-signal	i2c_data_buffer				: std_logic_vector(7 downto 0);
-signal	i2c_command_buffer			: std_logic_vector(6 downto 0);
-signal	i2c_start_condition			: std_logic;
-signal	i2c_strobe						: std_logic;
-signal	i2c_data_ena					: std_logic;
-signal	i2c_data_strobe				: std_logic;
-signal	i2cdstr							: std_logic;
-signal	i2c_to_m_flag					: std_logic;
-signal	i2c_to_master					: std_logic := '1';
-signal	i2c_mode							: std_logic := '1';
-signal	i2c_ena_to_m					: std_logic := '1';
-signal	i2c_out_data					: std_logic_vector(7 downto 0);
-signal	data_from_fpga					: std_logic_vector(7 downto 0);
-signal	i2c_ack							: std_logic := '1';
-signal	i2c_out_ena						: std_logic := '1';
-signal	i2c_out_data_strobe			: std_logic;
-signal	i2c_in_data_strobe			: std_logic;
-signal	ena_st							: std_logic;
-signal	ena_f								: std_logic;
-signal	ebl								: std_logic;
-signal	ebl_iorq							: std_logic;
-signal	ior								: std_logic;
-signal	rdh								: std_logic; 
-signal	seconds							: std_logic_vector(7 downto 0);
-signal	minutes							: std_logic_vector(7 downto 0);
-signal	hours								: std_logic_vector(7 downto 0);
-signal	week								: std_logic_vector(7 downto 0);
-signal	days								: std_logic_vector(7 downto 0);
-signal	month								: std_logic_vector(7 downto 0);
-signal	year								: std_logic_vector(7 downto 0);
-signal	addr_dff7						: std_logic;
-signal	addr_bff7						: std_logic;
-signal	portdff7							: std_logic_vector(7 downto 0);
-signal	portbff7							: std_logic_vector(7 downto 0);
-signal	addr_eff7						: std_logic;
-signal	int_counter						: std_logic_vector(5 downto 0);
-signal	int_flag0						: std_logic;
-signal	int_flag1						: std_logic;
-signal	beeper							: std_logic;
-signal	kempston							: std_logic_vector(4 downto 0);
-signal	in_l								: std_logic_vector(9 downto 0);
-signal	in_r								: std_logic_vector(9 downto 0);
-signal	mouse_x							: std_logic_vector(7 downto 0);
-signal	mouse_y							: std_logic_vector(7 downto 0);
-signal	mouse_b							: std_logic_vector(7 downto 0);
+signal	iorq_after_bus								: std_logic;
+signal	read_ports								: std_logic;
+signal	precounter								: std_logic_vector(4 downto 0);
+signal	cpu_we_enable_res							: std_logic;
+signal	cpu_we_enable								: std_logic;
+signal	weblk									: std_logic;
+signal	int_strobe								: std_logic;
+signal	i2c_scl_b								: std_logic;
+signal	i2c_sda_b								: std_logic;
+signal	i2c_bit_counter								: std_logic_vector(3 downto 0);
+signal	i2c_data_buffer								: std_logic_vector(7 downto 0);
+signal	i2c_command_buffer							: std_logic_vector(6 downto 0);
+signal	i2c_start_condition							: std_logic;
+signal	i2c_strobe								: std_logic;
+signal	i2c_data_ena								: std_logic;
+signal	i2c_data_strobe								: std_logic;
+signal	i2cdstr									: std_logic;
+signal	i2c_to_m_flag								: std_logic;
+signal	i2c_to_master								: std_logic := '1';
+signal	i2c_mode								: std_logic := '1';
+signal	i2c_ena_to_m								: std_logic := '1';
+signal	i2c_out_data								: std_logic_vector(7 downto 0);
+signal	data_from_fpga								: std_logic_vector(7 downto 0);
+signal	i2c_ack									: std_logic := '1';
+signal	i2c_out_ena								: std_logic := '1';
+signal	i2c_out_data_strobe							: std_logic;
+signal	i2c_in_data_strobe							: std_logic;
+signal	ena_st									: std_logic;
+signal	ena_f									: std_logic;
+signal	ebl									: std_logic;
+signal	ebl_iorq								: std_logic;
+signal	ior									: std_logic;
+signal	rdh									: std_logic; 
+signal	seconds									: std_logic_vector(7 downto 0);
+signal	minutes									: std_logic_vector(7 downto 0);
+signal	hours									: std_logic_vector(7 downto 0);
+signal	week									: std_logic_vector(7 downto 0);
+signal	days									: std_logic_vector(7 downto 0);
+signal	month									: std_logic_vector(7 downto 0);
+signal	year									: std_logic_vector(7 downto 0);
+signal	addr_dff7								: std_logic;
+signal	addr_bff7								: std_logic;
+signal	portdff7								: std_logic_vector(7 downto 0);
+signal	portbff7								: std_logic_vector(7 downto 0);
+signal	addr_eff7								: std_logic;
+signal	int_counter								: std_logic_vector(5 downto 0);
+signal	int_flag0								: std_logic;
+signal	int_flag1								: std_logic;
+signal	beeper									: std_logic;
+signal	kempston								: std_logic_vector(4 downto 0);
+signal	in_l									: std_logic_vector(9 downto 0);
+signal	in_r									: std_logic_vector(9 downto 0);
+signal	mouse_x									: std_logic_vector(7 downto 0);
+signal	mouse_y									: std_logic_vector(7 downto 0);
+signal	mouse_b									: std_logic_vector(7 downto 0);
 --bdi
-signal	vg93_ram_addr					: std_logic_vector(19 downto 0);
-signal	betadisk_transfer				: std_logic;
-signal	betadisk_transmit_counter	: std_logic_vector(5 downto 0);
-signal	write_byte_number				: std_logic_vector(7 downto 0);
-signal	write_sector_num				: std_logic_vector(7 downto 0);
-signal	read_sector_num				: std_logic_vector(7 downto 0);
-signal	read_byte_number				: std_logic_vector(7 downto 0);
-signal	vg93_O_data						: std_logic_vector(7 downto 0);
-signal	track_flag						: std_logic;
-signal	sector_flag						: std_logic;
-signal	restore_flag					: std_logic;
-signal	force_interrupt_flag			: std_logic;
-signal	track_position					: std_logic_vector(7 downto 0);
-signal	track_reg						: std_logic_vector(7 downto 0);
-signal	sector_reg						: std_logic_vector(7 downto 0);
-signal	status_reg						: std_logic_vector(7 downto 0);
-signal	betadisk_reg					: std_logic_vector(7 downto 0);
-signal	seek_flag						: std_logic;
-signal	vg93_intrq						: std_logic;
-signal	step_flag						: std_logic;
-signal	vg93_drq							: std_logic;
-signal	step_direction					: std_logic;
-signal	read_addr_flag					: std_logic;
-signal	read_flag						: std_logic;
-signal	write_flag						: std_logic;
-signal	vg93_data_from_ram			: std_logic_vector(7 downto 0);
-signal	vg93_cs							: std_logic;
-signal	read_trz							: std_logic;
-signal	write_trz						: std_logic;
-signal	vg93_data_for_cpu				: std_logic_vector(7 downto 0);
-signal	betadisk_r						: std_logic_vector(7 downto 0);
-signal	vg93_transaction				: std_logic;
-signal	betadisk_full_adr				: std_logic_vector(20 downto 0);
-signal	vg93_data_for_ram				: std_logic_vector(7 downto 0);
-signal	vg_tormoz		            : std_logic;
-signal	betadisk_flags					: std_logic_vector(11 downto 0);
+signal	vg93_ram_addr								: std_logic_vector(19 downto 0);
+signal	betadisk_transfer							: std_logic;
+signal	betadisk_transmit_counter						: std_logic_vector(5 downto 0);
+signal	write_byte_number							: std_logic_vector(7 downto 0);
+signal	write_sector_num							: std_logic_vector(7 downto 0);
+signal	read_sector_num								: std_logic_vector(7 downto 0);
+signal	read_byte_number							: std_logic_vector(7 downto 0);
+signal	vg93_O_data								: std_logic_vector(7 downto 0);
+signal	track_flag								: std_logic;
+signal	sector_flag								: std_logic;
+signal	restore_flag								: std_logic;
+signal	force_interrupt_flag							: std_logic;
+signal	track_position								: std_logic_vector(7 downto 0);
+signal	track_reg								: std_logic_vector(7 downto 0);
+signal	sector_reg								: std_logic_vector(7 downto 0);
+signal	status_reg								: std_logic_vector(7 downto 0);
+signal	betadisk_reg								: std_logic_vector(7 downto 0);
+signal	seek_flag								: std_logic;
+signal	vg93_intrq								: std_logic;
+signal	step_flag								: std_logic;
+signal	vg93_drq								: std_logic;
+signal	step_direction								: std_logic;
+signal	read_addr_flag								: std_logic;
+signal	read_flag								: std_logic;
+signal	write_flag								: std_logic;
+signal	vg93_data_from_ram							: std_logic_vector(7 downto 0);
+signal	vg93_cs									: std_logic;
+signal	read_trz								: std_logic;
+signal	write_trz								: std_logic;
+signal	vg93_data_for_cpu							: std_logic_vector(7 downto 0);
+signal	betadisk_r								: std_logic_vector(7 downto 0);
+signal	vg93_transaction							: std_logic;
+signal	betadisk_full_adr							: std_logic_vector(20 downto 0);
+signal	vg93_data_for_ram							: std_logic_vector(7 downto 0);
+signal	vg_tormoz		           					: std_logic;
+signal	betadisk_flags								: std_logic_vector(11 downto 0);
 --cmos
-signal	cmos_clk		        			: std_logic;
-signal	cmos_data_in					: std_logic_vector(7 downto 0);
-signal	cmos_addr						: std_logic_vector(7 downto 0);
-signal	cmos_we							: std_logic;
-signal	cmos_start			   	   : std_logic;
-signal	cmos_data_out					: std_logic_vector(7 downto 0);
-signal	cmos_cpuread					: std_logic;
-signal	cmos_cpuwrite					: std_logic;
-signal	cmos_mode						: std_logic_vector(3 downto 0);
-signal	cmos_nado						: std_logic:='0';
-signal	cmos_upload						: std_logic:='1';
-signal	cmos_download					: std_logic :='1';
-signal	cmos_upload_counter			: std_logic_vector(8 downto 0);
-signal	cmos_download_counter		: std_logic_vector(8 downto 0);
-signal	seconds_flag					: std_logic:='0';
-signal	minutes_flag					: std_logic:='0';
-signal	hours_flag						: std_logic:='0';
-signal	week_flag						: std_logic:='0';
-signal	days_flag						: std_logic:='0';
-signal	month_flag						: std_logic:='0';
-signal	year_flag						: std_logic:='0';
-signal	cmos_upload_strobe			: std_logic:='0';
-signal	cmos_download_strobe			: std_logic:='0';
-signal	cmos_strobe						: std_logic:='0';
-signal	cpu_write_strobe0				: std_logic;
-signal	cpu_write_strobe				: std_logic;
-signal	cmos_flags						: std_logic_vector(7 downto 0);
-signal	cmos_download_reset			: std_logic_vector(1 downto 0);
-signal	cmos_download_buffer			: std_logic_vector(7 downto 0);
-signal	cmos_cpu_buffer				: std_logic_vector(7 downto 0);
-signal	cmos_data_buffer				: std_logic_vector(7 downto 0);
-signal	fromcmos2fpga					: std_logic;
-signal	fromfpga2cmos					: std_logic;
-signal	fromfpga2cpu					: std_logic;
-signal	fromcpu2fpga					: std_logic;
-signal	iorq_onetime					: std_logic;
-signal	cmos_start1						: std_logic_vector(3 downto 0);
-signal	i2c_dataonetime				: std_logic;
-signal	i2c_mcudataonetime			: std_logic;
+signal	cmos_clk		        					: std_logic;
+signal	cmos_data_in								: std_logic_vector(7 downto 0);
+signal	cmos_addr								: std_logic_vector(7 downto 0);
+signal	cmos_we									: std_logic;
+signal	cmos_start			   	  				: std_logic;
+signal	cmos_data_out								: std_logic_vector(7 downto 0);
+signal	cmos_cpuread								: std_logic;
+signal	cmos_cpuwrite								: std_logic;
+signal	cmos_mode								: std_logic_vector(3 downto 0);
+signal	cmos_nado								: std_logic:='0';
+signal	cmos_upload								: std_logic:='1';
+signal	cmos_download								: std_logic :='1';
+signal	cmos_upload_counter							: std_logic_vector(8 downto 0);
+signal	cmos_download_counter							: std_logic_vector(8 downto 0);
+signal	seconds_flag								: std_logic:='0';
+signal	minutes_flag								: std_logic:='0';
+signal	hours_flag								: std_logic:='0';
+signal	week_flag								: std_logic:='0';
+signal	days_flag								: std_logic:='0';
+signal	month_flag								: std_logic:='0';
+signal	year_flag								: std_logic:='0';
+signal	cmos_upload_strobe							: std_logic:='0';
+signal	cmos_download_strobe							: std_logic:='0';
+signal	cmos_strobe								: std_logic:='0';
+signal	cpu_write_strobe0							: std_logic;
+signal	cpu_write_strobe							: std_logic;
+signal	cmos_flags								: std_logic_vector(7 downto 0);
+signal	cmos_download_reset							: std_logic_vector(1 downto 0);
+signal	cmos_download_buffer							: std_logic_vector(7 downto 0);
+signal	cmos_cpu_buffer								: std_logic_vector(7 downto 0);
+signal	cmos_data_buffer							: std_logic_vector(7 downto 0);
+signal	fromcmos2fpga								: std_logic;
+signal	fromfpga2cmos								: std_logic;
+signal	fromfpga2cpu								: std_logic;
+signal	fromcpu2fpga								: std_logic;
+signal	iorq_onetime								: std_logic;
+signal	cmos_start1								: std_logic_vector(3 downto 0);
+signal	i2c_dataonetime								: std_logic;
+signal	i2c_mcudataonetime							: std_logic;
 -- cpu core signals:
-signal	cpu_d								: std_logic_vector(7 downto 0);
-signal	cpu_a								: std_logic_vector(15 downto 0);
-signal	cpu_int							: std_logic;
-signal	cpu_nmi							: std_logic;
-signal	cpu_mreq							: std_logic;
-signal	cpu_iorq							: std_logic;
-signal	cpu_rd							: std_logic;
-signal	cpu_notrd						: std_logic;
-signal	cpu_wr							: std_logic;
-signal	cpu_wait							: std_logic;
-signal	cpu_busrq						: std_logic;
-signal	cpu_busack						: std_logic;
-signal	cpu_res							: std_logic;
-signal	cpu_m1							: std_logic;
-signal	cpu_rfsh							: std_logic;
-signal	cpu_halt							: std_logic;
-signal	cpu_clk							: std_logic;
-signal	cpu_mc							: std_logic_vector(2 downto 0);
-signal	cpu_ts							: std_logic_vector(2 downto 0);
-signal	turbo								: std_logic;
-signal	cpu_clk_b						: std_logic;
-signal	cpu_speed						: std_logic_vector(2 downto 0);
-signal	tormoz							: std_logic;
+signal	cpu_d									: std_logic_vector(7 downto 0);
+signal	cpu_a									: std_logic_vector(15 downto 0);
+signal	cpu_int									: std_logic;
+signal	cpu_nmi									: std_logic;
+signal	cpu_mreq								: std_logic;
+signal	cpu_iorq								: std_logic;
+signal	cpu_rd									: std_logic;
+signal	cpu_notrd								: std_logic;
+signal	cpu_wr									: std_logic;
+signal	cpu_wait								: std_logic;
+signal	cpu_busrq								: std_logic;
+signal	cpu_busack								: std_logic;
+signal	cpu_res									: std_logic;
+signal	cpu_m1									: std_logic;
+signal	cpu_rfsh								: std_logic;
+signal	cpu_halt								: std_logic;
+signal	cpu_clk									: std_logic;
+signal	cpu_mc									: std_logic_vector(2 downto 0);
+signal	cpu_ts									: std_logic_vector(2 downto 0);
+signal	turbo									: std_logic;
+signal	cpu_clk_b								: std_logic;
+signal	cpu_speed								: std_logic_vector(2 downto 0);
+signal	tormoz									: std_logic;
 -- ym2149 
-signal	ym_number						: std_logic;
-signal	ym0_wr_data						: std_logic;
-signal	ym0_rd_data						: std_logic;
-signal	ym0_wr_addr						: std_logic;
-signal	ym1_wr_data						: std_logic;
-signal	ym1_rd_data						: std_logic;
-signal	ym1_wr_addr						: std_logic;
-signal	strobe0_a						: std_logic;
-signal	strobe0_b						: std_logic;
-signal	strobe0_c						: std_logic;
-signal	strobe1_a						: std_logic;
-signal	strobe1_b						: std_logic;
-signal	strobe1_c						: std_logic;
-signal	ym0_do							: std_logic_vector(7 downto 0);
-signal	ym1_do							: std_logic_vector(7 downto 0);
-signal	ym_do								: std_logic_vector(7 downto 0);
-signal	ym0_snd							: std_logic_vector(7 downto 0);
-signal	ym1_snd							: std_logic_vector(7 downto 0);
-signal	ym0a								: std_logic_vector(7 downto 0);
-signal	ym0b								: std_logic_vector(7 downto 0);
-signal	ym0c								: std_logic_vector(7 downto 0);
-signal	ym1a								: std_logic_vector(7 downto 0);
-signal	ym1b								: std_logic_vector(7 downto 0);
-signal	ym1c								: std_logic_vector(7 downto 0);
-signal	snd_right						: std_logic_vector(7 downto 0);
-signal	snd_left							: std_logic_vector(7 downto 0);
-signal	ym0_state						: std_logic_vector(1 downto 0);
-signal	ym1_state						: std_logic_vector(1 downto 0);
-signal	ym_clk							: std_logic;
+signal	ym_number								: std_logic;
+signal	ym0_wr_data								: std_logic;
+signal	ym0_rd_data								: std_logic;
+signal	ym0_wr_addr								: std_logic;
+signal	ym1_wr_data								: std_logic;
+signal	ym1_rd_data								: std_logic;
+signal	ym1_wr_addr								: std_logic;
+signal	strobe0_a								: std_logic;
+signal	strobe0_b								: std_logic;
+signal	strobe0_c								: std_logic;
+signal	strobe1_a								: std_logic;
+signal	strobe1_b								: std_logic;
+signal	strobe1_c								: std_logic;
+signal	ym0_do									: std_logic_vector(7 downto 0);
+signal	ym1_do									: std_logic_vector(7 downto 0);
+signal	ym_do									: std_logic_vector(7 downto 0);
+signal	ym0_snd									: std_logic_vector(7 downto 0);
+signal	ym1_snd									: std_logic_vector(7 downto 0);
+signal	ym0a									: std_logic_vector(7 downto 0);
+signal	ym0b									: std_logic_vector(7 downto 0);
+signal	ym0c									: std_logic_vector(7 downto 0);
+signal	ym1a									: std_logic_vector(7 downto 0);
+signal	ym1b									: std_logic_vector(7 downto 0);
+signal	ym1c									: std_logic_vector(7 downto 0);
+signal	snd_right								: std_logic_vector(7 downto 0);
+signal	snd_left								: std_logic_vector(7 downto 0);
+signal	ym0_state								: std_logic_vector(1 downto 0);
+signal	ym1_state								: std_logic_vector(1 downto 0);
+signal	ym_clk									: std_logic;
 -- sd-card
-signal	spi_enable						: std_logic := '1';
-signal	spi_cmd							: std_logic;
-signal	sd_clock							: std_logic;
-signal	sd_sync							: std_logic;
-signal	port57wr							: std_logic;
-signal	port57rd							: std_logic;
-signal	spi_we_data						: std_logic_vector(7 downto 0);
-signal	spi_rd_data						: std_logic_vector(7 downto 0);
-signal	port57buffer					: std_logic_vector(7 downto 0);
-signal	sd_config						: std_logic_vector(7 downto 0);
-signal	sd_counter						: std_logic_vector(3 downto 0);
-signal	sd_ena0							: std_logic;
-signal	sd_ena1							: std_logic;
-signal	sd_readflag						: std_logic;
-signal	sd_writeflag					: std_logic;
-signal	sd_active_flag					: std_logic;
-signal	sd_stop							: std_logic;
-signal	vidr								: std_logic_vector(4 downto 0);
-signal	vidg								: std_logic_vector(4 downto 0);
-signal	vidb								: std_logic_vector(4 downto 0);
-signal	gfx_mode							: std_logic_vector(5 downto 0); --atm (5..3). pent (2..0)
+signal	spi_enable								: std_logic := '1';
+signal	spi_cmd									: std_logic;
+signal	sd_clock								: std_logic;
+signal	sd_sync									: std_logic;
+signal	port57wr								: std_logic;
+signal	port57rd								: std_logic;
+signal	spi_we_data								: std_logic_vector(7 downto 0);
+signal	spi_rd_data								: std_logic_vector(7 downto 0);
+signal	port57buffer								: std_logic_vector(7 downto 0);
+signal	sd_config								: std_logic_vector(7 downto 0);
+signal	sd_counter								: std_logic_vector(3 downto 0);
+signal	sd_ena0									: std_logic;
+signal	sd_ena1									: std_logic;
+signal	sd_readflag								: std_logic;
+signal	sd_writeflag								: std_logic;
+signal	sd_active_flag								: std_logic;
+signal	sd_stop									: std_logic;
+signal	vidr									: std_logic_vector(4 downto 0);
+signal	vidg									: std_logic_vector(4 downto 0);
+signal	vidb									: std_logic_vector(4 downto 0);
+signal	gfx_mode								: std_logic_vector(5 downto 0); --atm (5..3). pent (2..0)
 -- gfx_mode(2 downto 0):
 -- 000: standard zx screen
 -- 001: alco
@@ -560,51 +560,51 @@ signal	gfx_mode							: std_logic_vector(5 downto 0); --atm (5..3). pent (2..0)
 -- 010: multicolor 640x200
 -- 110: textmode
 -- 011: pentagon modes
-signal	otmtxt_addr						: std_logic_vector(16 downto 0);
-signal	int_delay						: std_logic_vector(9 downto 0):=b"1011000000";--:=b"1010111111";--:=b"1100101111"; --b"1100101110";--:=b"1101000101";--:=b"1100111001";
-signal	index								: std_logic;
-signal	iorq_tormoz_ena				: std_logic:='1';
-signal	iorq_tormoz_flag0				: std_logic:='1';
-signal	iorq_tormoz_flag1				: std_logic:='1';
-signal	iorq_tormoz_flag				: std_logic:='1';
-signal	iorq_tormoz_counter			: std_logic_vector(9 downto 0);
-signal	iorq_tormoz_phase				: std_logic:='1';
-signal	speed_change					: std_logic:='0';
-signal	resync							: std_logic:='0';
-signal	iorq_change						: std_logic:='0';
-signal	sd_iorq_change					: std_logic:='0';
-signal	change_tormoz_flag			: std_logic:='0';
-signal	change_tormoz_flag0			: std_logic:='0';
-signal	change_tormoz_flag1			: std_logic:='0';
-signal	iocycle							: std_logic:='0';
-signal	memcycle							: std_logic:='0';
-signal	ioflag0							: std_logic:='0';
-signal	ioflag1							: std_logic:='0';
-signal	ioflag2							: std_logic:='0';
-signal	ioflag3							: std_logic:='0';
-signal	iocycle1							: std_logic:='0';
-signal	iocycle2							: std_logic:='0';
-signal	memflag0							: std_logic:='0';
-signal	memflag1							: std_logic:='0';
-signal	memflag2							: std_logic:='0';
-signal	memflag3							: std_logic:='0';
-signal	memflag4							: std_logic:='0';
-signal	memcycle1						: std_logic:='0';
-signal	memcycle2						: std_logic:='0';
-signal	memcycle3						: std_logic:='0';
-signal	lowclk							: std_logic;
-signal	fastclk							: std_logic;
-signal	read_fe							: std_logic:='1'; 
-signal	tapeout							: std_logic:='0'; 
-signal	addiction						: std_logic_vector(1 downto 0):=b"00";
-signal	wr_ports_single				: std_logic:='0';
-signal	dos_1								: std_logic:='1';
+signal	otmtxt_addr								: std_logic_vector(16 downto 0);
+signal	int_delay								: std_logic_vector(9 downto 0):=b"1011000000";
+signal	index									: std_logic;
+signal	iorq_tormoz_ena								: std_logic:='1';
+signal	iorq_tormoz_flag0							: std_logic:='1';
+signal	iorq_tormoz_flag1							: std_logic:='1';
+signal	iorq_tormoz_flag							: std_logic:='1';
+signal	iorq_tormoz_counter							: std_logic_vector(9 downto 0);
+signal	iorq_tormoz_phase							: std_logic:='1';
+signal	speed_change								: std_logic:='0';
+signal	resync									: std_logic:='0';
+signal	iorq_change								: std_logic:='0';
+signal	sd_iorq_change								: std_logic:='0';
+signal	change_tormoz_flag							: std_logic:='0';
+signal	change_tormoz_flag0							: std_logic:='0';
+signal	change_tormoz_flag1							: std_logic:='0';
+signal	iocycle									: std_logic:='0';
+signal	memcycle								: std_logic:='0';
+signal	ioflag0									: std_logic:='0';
+signal	ioflag1									: std_logic:='0';
+signal	ioflag2									: std_logic:='0';
+signal	ioflag3									: std_logic:='0';
+signal	iocycle1								: std_logic:='0';
+signal	iocycle2								: std_logic:='0';
+signal	memflag0								: std_logic:='0';
+signal	memflag1								: std_logic:='0';
+signal	memflag2								: std_logic:='0';
+signal	memflag3								: std_logic:='0';
+signal	memflag4								: std_logic:='0';
+signal	memcycle1								: std_logic:='0';
+signal	memcycle2								: std_logic:='0';
+signal	memcycle3								: std_logic:='0';
+signal	lowclk									: std_logic;
+signal	fastclk									: std_logic;
+signal	read_fe									: std_logic:='1'; 
+signal	tapeout									: std_logic:='0'; 
+signal	addiction								: std_logic_vector(1 downto 0):=b"00";
+signal	wr_ports_single								: std_logic:='0';
+signal	dos_1									: std_logic:='1';
 
 constant key_byte_number_max: natural:= 120;
             
     begin
     
--- моргание светодиодами
+-- led flashing :)
 process (clk)
         begin
         if (clk'event and clk='1') then counter(28 downto 0) <= counter(28 downto 0)+'1';
@@ -748,20 +748,20 @@ begin
 				case betadisk_transmit_counter(5 downto 0) is
 					when b"000000" => data_from_fpga(7 downto 0) <= betadisk_reg(7 downto 0);
 					when b"000001" => data_from_fpga(7 downto 0) <= status_reg(7 downto 0);
-					when b"000010" => data_from_fpga(7 downto 0) <= sector_reg(7 downto 0);--border_delay(7 downto 0);  
-					when b"000011" => data_from_fpga(7 downto 0) <= cmos_flags(7 downto 0);--track_reg(7 downto 0);--int_delay(7 downto 0);
-					when b"000100" => data_from_fpga(7 downto 0) <= track_position(7 downto 0);--int_delay(7 downto 0);
+					when b"000010" => data_from_fpga(7 downto 0) <= sector_reg(7 downto 0); 
+					when b"000011" => data_from_fpga(7 downto 0) <= cmos_flags(7 downto 0);
+					when b"000100" => data_from_fpga(7 downto 0) <= track_position(7 downto 0);
 					when b"000101" => data_from_fpga(7 downto 0) <= vg93_O_data(7 downto 0);
 					when b"000110" => data_from_fpga(7 downto 0) <= betadisk_flags(7 downto 0);
 					when b"000111" => data_from_fpga(7 downto 0) <= (betadisk_flags(11 downto 8) & "0000");
-					when b"001000" => data_from_fpga(7 downto 0) <= read_byte_number(7 downto 0);--border_delay(7 downto 0);
+					when b"001000" => data_from_fpga(7 downto 0) <= read_byte_number(7 downto 0);
 					when b"001001" => data_from_fpga(7 downto 0) <= read_sector_num(7 downto 0);
 					when b"001010" => data_from_fpga(7 downto 0) <= write_byte_number(7 downto 0);
 					when b"001011" => data_from_fpga(7 downto 0) <= write_sector_num(7 downto 0);
 					when b"001100" => data_from_fpga(7 downto 0) <= cpu_a(15 downto 8);
 					when b"001101" => data_from_fpga(7 downto 0) <= cpu_a(7 downto 0);
 --					when b"001110" => data_from_fpga(7 downto 0) <= breakpoints_status(7 downto 0);
-					when b"001111" => data_from_fpga(7 downto 0) <= cmos_download_counter(5 downto 0) & b"00";-- & breakpoint_event & one_step_flag;
+					when b"001111" => data_from_fpga(7 downto 0) <= cmos_download_counter(5 downto 0) & b"00";
 					when b"010000" => data_from_fpga(7 downto 0) <= cmos_download_buffer(7 downto 0);
 					when others => null;
 				end case;
@@ -775,7 +775,7 @@ end process;
 -- cmos -------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
--- передача от мцу к фпга
+-- from mcu to fpga
 process (pixel_clock, i2c_in_data_strobe, hardware_reset, fromfpga2cmos, fromcmos2fpga, i2c_data_buffer)
 begin
 if (hardware_reset = '0' or fromcmos2fpga = '1') then cmos_upload <= '1';
@@ -793,7 +793,7 @@ if (hardware_reset = '0' or fromcmos2fpga = '1') then cmos_upload <= '1';
 end if;
 end process;
 
--- передача от фпга к мцу
+-- from fpga to mcu
 process (pixel_clock, i2c_out_data_strobe, hardware_reset, betadisk_transmit_counter, betadisk_transfer, fromfpga2cmos, fromcmos2fpga)
 begin
 if (hardware_reset = '0') then cmos_download <= '1'; cmos_download_counter(5 downto 0) <= b"111111"; 
@@ -835,29 +835,29 @@ begin
 		elsif (pixel_clock'event and pixel_clock='0') then
 			if(cmos_start1 = b"0000") then
             case cmos_mode(3 downto 0) is
-                when b"0111" => -- передача данных из цмос в буфер фпга
+                when b"0111" => -- from cmos to fpga buffer
                         cmos_addr(7 downto 0) <= b"00" & cmos_upload_counter(5 downto 0);
                         cmos_we <= '0'; 
-                        cmos_data_in(7 downto 0) <= data_from_mcu(7 downto 0);--cmos_data_buffer(7 downto 0);              
-								cmos_start <= '1';
-								fromcmos2fpga <= '1';
-                when b"1011" => -- передача данных из буфера фпга в цмос
+                        cmos_data_in(7 downto 0) <= data_from_mcu(7 downto 0);             
+			cmos_start <= '1';
+			fromcmos2fpga <= '1';
+                when b"1011" => -- from fpga buffer to cmos
                         cmos_addr(7 downto 0) <= b"00" & cmos_download_counter(5 downto 0);
                         cmos_we <= '1';                
-								cmos_start <= '1';
-								cmos_download_reset(1 downto 0) <= b"11";  
-								fromfpga2cmos <= '1';							
-                when b"1101" => -- передача данных процессору из буфера фпга              
+			cmos_start <= '1';
+			cmos_download_reset(1 downto 0) <= b"11";  
+			fromfpga2cmos <= '1';							
+                when b"1101" => -- to z80 from fpga buffer              
                         cmos_addr(7 downto 0) <= portdff7(7 downto 0);
                         cmos_we <= '1';
                         cmos_start <= '1';
-								fromfpga2cpu <= '1';
-                when b"1110" => -- запись данных от процессора в буфер фпга
+			fromfpga2cpu <= '1';
+                when b"1110" => -- from z80 to fpga buffer
                         cmos_addr(7 downto 0) <= portdff7(7 downto 0);
                         cmos_we <= '0';
                         cmos_data_in(7 downto 0) <= portbff7(7 downto 0);
                         cmos_start <= '1';
-								fromcpu2fpga <= '1';
+			fromcpu2fpga <= '1';
                 when others => null;
             end case;
 			end if;
@@ -1100,7 +1100,7 @@ begin
 		
 		if (main_state_counter(1 downto 0) = b"01" or main_state_counter(1 downto 0) = b"10") then
 			radr(18 downto 0) <= full_adr(18 downto 0); 
-			if ((z80_to_ram ='0' and cpu_memwr = '0') or (z80_to_ram ='1' and upload_in_process = '0') or (z80_to_ram ='0' and vg93_transaction = '0' and write_flag = '0' )) then -- если в память пишут
+			if ((z80_to_ram ='0' and cpu_memwr = '0') or (z80_to_ram ='1' and upload_in_process = '0') or (z80_to_ram ='0' and vg93_transaction = '0' and write_flag = '0' )) then -- ГҐГ±Г«ГЁ Гў ГЇГ Г¬ГїГІГј ГЇГЁГёГіГІ
 
 --              if(full_adr(20) = '0') then
                     blk0_d(7 downto 0) <= ram_outdata(7 downto 0);
@@ -1112,7 +1112,7 @@ begin
 	end if;
 end process;
 
--- oe/we для внешней памяти
+-- ext ram oe/we
 process (cpu_memwr, cpu_we_enable_res)
 begin
 if(cpu_we_enable_res='0') then cpu_we_enable <= '1';
@@ -1226,8 +1226,6 @@ begin
     end if;
 end process;
 
-----------------------------------------------------------
--- защелкивание номера страницы для закачки/выкачки
 process (pagenum, hardware_reset)
 begin
     if (hardware_reset = '0') then page_number <= (others => '1');
@@ -1236,8 +1234,6 @@ begin
     end if;
 end process;
 
-------------------------------------------------------------------------
--- управление подключеним устройств к внешней памяти - z80 или мцу
 process (cmd07, hardware_reset)
 begin
     if (hardware_reset = '0') then z80_to_ram <= '1';
@@ -1245,8 +1241,6 @@ begin
     end if;
 end process;
 
-------------------------------------------------------------------------
--- сброс зетнега
 process (pixel_clock, cmd05, hardware_reset)
 begin
     if (hardware_reset = '0') then z80_reset_from_mcu <= '0';
@@ -1256,8 +1250,9 @@ begin
 end process;
 
 cpu_res <= z80_reset_from_mcu and fpga_res_input;
+
 ------------------------------------------------------------------------
---  закачка матрицы клавиатуры и прочей хрени в регистры fpga
+--  data transfer from mcu to fpga registers
 
 process (i2c_data_strobe, cmd02)--, textbuffer_we)
 begin
@@ -1408,7 +1403,6 @@ begin
                         -- port 7ffd (system control 0):
                         if (cpu_a(15)='0' and cpu_a(1)='0') then
                             if (porteff7(2)='0' or (porteff7(2)='1' and dos = '0')) then port7ffd(7 downto 0) <= cpu_d(7 downto 0);
---                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ в досе все равно 1 Мб памяти, несмотря на ефф7        
                                 else if (port7ffd(5)= '0') then port7ffd(5 downto 0) <= cpu_d(5 downto 0); end if;
                             end if;                        
                         end if;
@@ -1539,7 +1533,7 @@ addr_eff7 <= '0' when cpu_a(15 downto 0) = 61431
 else '1';
 
 -------------------------------------------------------------------------------------------
--- шина данных cpu
+-- cpu data bus
 read_ports <= not(ebl) or cpu_iord;
 read_fe <= read_ports or cpu_a(0);
 
@@ -1595,7 +1589,7 @@ else (others =>'1') when (cpu_mreq='1' and cpu_m1='0' and cpu_iorq='0' and cpu_r
 else (others =>'Z');
        
 ----------------------------------------------------------------------
--- ym2149 и трупосаунд
+-- ym2149 and turbosound
 process (cpu_clk, cpu_iowr, cpu_m1, cpu_a, cpu_d, cpu_res)
 begin
     if (cpu_res = '0') then ym_number <= '0'; ym0_wr_addr<='1'; ym0_wr_data<='1'; ym1_wr_addr<='1'; ym1_wr_data<='1';
@@ -1697,7 +1691,7 @@ end if;
 end process; 
 
 -------------------------------------------------------------
--- формирование сигнала int
+-- cpu int
 process (cpu_clk, int_flag1)
 begin
     if (int_flag1='1') then int_counter(5 downto 0) <= b"011111"; 
@@ -1728,7 +1722,7 @@ end if;
 end process;
 
 ------------------------------------------------------------------------
--- тактирование z80 (и торможение при необходимости)
+-- cpu clocking and stopping
 process (pixel_clock)
 begin
 	if (pixel_clock'event and pixel_clock = '1') then
@@ -1741,8 +1735,8 @@ cpu_speed(2 downto 0) <= dosen & portxx77(3) & porteff7(4);
 resync <= 	precounter(4) when (cpu_speed(1 downto 0)=b"01")
 else			(precounter(4) or ioflag0) when (iocycle2 = '1')
 else			(precounter(4)) when (memflag2 = '1')
-else			(precounter(2) or memflag0) when (cpu_speed(1 downto 0)=b"00" and iocycle2 = '0' and memflag2 = '0')--2
-else			(precounter(1) or memflag0) when (cpu_speed(1)='1' and iocycle2 = '0' and memflag2 = '0');--1
+else			(precounter(2) or memflag0) when (cpu_speed(1 downto 0)=b"00" and iocycle2 = '0' and memflag2 = '0')
+else			(precounter(1) or memflag0) when (cpu_speed(1)='1' and iocycle2 = '0' and memflag2 = '0');
 
 fastclk <= precounter(2) when (cpu_speed(1 downto 0)=b"00")
 else precounter(1) when (cpu_speed(1)='1');
@@ -1882,9 +1876,8 @@ else cpu_d(7 downto 0) when fpgadir='1';
 --------------------------------
 -- IDE by Nemo
 
---Тыж сам делал немоыде :)
---10 30 50 70 90 b0 d0 f0 - первый ЦС,
---08 28 48 68 88 a8 c8 e8 - второй ЦС.
+--10 30 50 70 90 b0 d0 f0 - first cs,
+--08 28 48 68 88 a8 c8 e8 - second cs.
 
 ebl <= (not(cpu_m1) or cpu_a(1) or cpu_a(2));        
 
