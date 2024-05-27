@@ -1,4 +1,3 @@
--- ver 0666 koe - Fixed I/O and memory timings
 --------------------------------------------------------------------------------
 -- ****
 -- T80(c) core. Attempt to finish all undocumented features and provide
@@ -76,7 +75,7 @@
 --      0240 : Added interrupt ack fix by Mike Johnson, changed (IX/IY+d) timing and changed flags in GB mode
 --      0242 : Added I/O wait, fixed refresh address, moved some registers to RAM
 --      0247 : Fixed bus req/ack cycle
---
+--	0667 : koe - Fixed I/O/memory/int timings
 
 library IEEE;
 use IEEE.std_logic_1164.all;
