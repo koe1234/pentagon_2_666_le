@@ -149,8 +149,8 @@ signal vg_tormoz:std_logic;
 signal tr00:std_logic;
 signal index_pulse:std_logic;
 signal index_pulse_period: std_logic_vector(24 downto 0);
-signal motor_start: std_logic:='1'; -- мотор крутится, когда 0
-signal motor_stop: std_logic:='0'; -- мотор крутится, когда 0
+signal motor_start: std_logic:='1';
+signal motor_stop: std_logic:='0';
 signal motor: std_logic;
 signal motor_reset: std_logic;
 signal motor_flag: std_logic:='0';
@@ -194,7 +194,7 @@ if (hardware_reset = '0' or vg93_reset = '0') then
                             command_intrq <= '0';
                             vg_delay <= '1';
 
-                            step_direction <= '1'; -- направление перемещения головки: 0 - на уменьшение, 1 на увеличение
+                            step_direction <= '1'; -- head stepping: 0 - dec; 1 - inc
                             vg93_nrd <= '1'; -- not ready flag
 
                             seek_flag <= '1';
@@ -242,7 +242,7 @@ if (hardware_reset = '0' or vg93_reset = '0') then
                
 										 
         elsif (vg93_cs'event and vg93_cs='0') then
-         if (betadisk_reg(1 downto 0)="00") then -- работаем только на диске A:
+         if (betadisk_reg(1 downto 0)="00") then -- drive A:
 
             if (cpu_rd='0') then
             
@@ -258,9 +258,9 @@ if (hardware_reset = '0' or vg93_reset = '0') then
             if (cpu_wr='0') then
                 vg93_O_data(7 downto 0) <= (others => 'Z');
                 case cpu_a(6 downto 5) is
-                    -- загрузка кода команды
+                    -- command code
                     when b"00" =>   command_reg(7 downto 0) <= cpu_d(7 downto 0);
-                                    command_intrq <= '0'; -- надо уточнить, нужно ли
+                                    command_intrq <= '0';
                         case cpu_d(7 downto 4) is
                             -- restore command
                             when "0000" => read_flag <= '1'; write_flag <= '1'; sector_flag <='1'; track_flag <='1'; restore_flag <= '0'; vg_delay <= '1'; vg93_nrd <= '1';
@@ -301,7 +301,7 @@ if (hardware_reset = '0' or vg93_reset = '0') then
                             when "1111" => read_flag <= '1'; sector_flag <='1'; write_flag <='0'; track_flag <= '0'; vg93_nrd <= '1'; write_start <= '0';
                             -- force interrupt command
                             when "1101" => force_interrupt_flag <= '0';
-															vg93_nrd <= '0'; -- Уточнить !!! 
+															vg93_nrd <= '0';
 															vg_delay <= '1';
                                            force_interrupt_int <= (cpu_d(0) or cpu_d(1) or cpu_d(2) or cpu_d(3));
                             when others => null;
@@ -316,7 +316,7 @@ if (hardware_reset = '0' or vg93_reset = '0') then
 end if;
 end process;
 
--- index pulse: частота вращения диска 5 Гц, длительность индексного импульса 4 мс (в реале около 3 мс для 3.5", около 4 мс для 5.25")
+-- index pulse: index pulse frequency is 5 Hz, index pulse width is 4 ms (real appr. 3 ms for 3.5", appr. 4 ms for 5.25")
 
 motor <= motor_start or motor_stop;
 
@@ -379,7 +379,7 @@ process (pixel_clock, hardware_reset, vg93_reset, read_addr_flag, vg93_cs, force
 begin
 if (hardware_reset = '0' or vg93_reset = '0' or force_interrupt_flag = '0') then radr_drq <= '0'; radr_nrd <= '1';
     elsif (read_addr_flag = '1') then radr_state(2 downto 0) <= b"110"; radr_flag0 <= '0'; radr_delay(6 downto 0) <= (others =>'1');  radr_intrq_flag <= '0'; radr_out_data(7 downto 0) <= b"00000000";
-            elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then radr_drq <= '0'; -- сбрасываем drq при чтении данных
+            elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then radr_drq <= '0'; -- Г±ГЎГ°Г Г±Г»ГўГ ГҐГ¬ drq ГЇГ°ГЁ Г·ГІГҐГ­ГЁГЁ Г¤Г Г­Г­Г»Гµ
             elsif (pixel_clock'event and pixel_clock = '1') then
                 if (radr_state(2 downto 0) = b"110") then radr_nrd <='0'; end if;
                 if (radr_delay(6 downto 0) > 0) then radr_delay(6 downto 0) <= radr_delay(6 downto 0) - '1'; end if;
@@ -410,7 +410,7 @@ process (pixel_clock, hardware_reset, vg93_reset, read_start, sector_flag, track
 begin
 if (hardware_reset = '0' or vg93_reset = '0' or force_interrupt_flag = '0') then read_drq <= '0'; read_trz <= '0';
     elsif (read_start='1') then read_state(1 downto 0) <= b"00"; read_byte_number(8 downto 0) <= (others =>'0'); read_delay(6 downto 0) <= (others =>'1'); read_trz <= '0'; read_flg0 <='0'; read_drq <='0'; read_flg1 <='0'; read_nrd <='0'; read_intrq_flag <='0';
-        elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then read_drq <= '0'; -- сбрасываем drq при чтении данных
+        elsif (vg93_cs = '0' and cpu_rd='0' and cpu_a(6 downto 5) = b"11") then read_drq <= '0'; -- DRQ reset
             elsif (pixel_clock'event and pixel_clock = '1') then
             if (read_state = b"00") then
                read_nrd <= '1';
@@ -443,7 +443,7 @@ process (pixel_clock, hardware_reset, vg93_reset, write_start, vg93_cs, cpu_wr, 
 begin
 if (hardware_reset = '0' or vg93_reset = '0' or force_interrupt_flag = '0') then write_drq <= '0'; write_trz <= '0';
     elsif (write_start='1') then write_state(1 downto 0) <= b"00"; write_byte_number(8 downto 0) <= (others =>'0'); write_delay(6 downto 0) <= (others =>'1'); write_trz <= '0'; write_flg0 <='0'; write_drq <='0'; write_flg1 <='0'; write_nrd <='0'; write_intrq_flag <='0';
-        elsif (vg93_cs = '0' and cpu_wr='0' and cpu_a(6 downto 5) = b"11") then write_drq <= '0'; -- сбрасываем drq при получении данных
+        elsif (vg93_cs = '0' and cpu_wr='0' and cpu_a(6 downto 5) = b"11") then write_drq <= '0'; -- DRQ reset
             elsif (pixel_clock'event and pixel_clock = '1') then
             if (write_state = b"00") then
                 write_nrd <= '1';
@@ -470,7 +470,7 @@ if (hardware_reset = '0' or vg93_reset = '0' or force_interrupt_flag = '0') then
 end if;
 end process;
 
--- у вг93 дороги нумеруются от 0 до 80 (+ 1 бит верх-низ, итого до 160), сектора от 1 до 16
+-- tracks numbering: 80 tracks with 2 sides, real numbering is 0..160, sectors from 1 to 16
 process (pixel_clock, track_position, betadisk_reg, read_flag, write_flag, read_sector_num, read_byte_number, write_sector_num, write_byte_number)
 begin
 	if (pixel_clock'event and pixel_clock = '0') then
