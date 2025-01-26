@@ -66,20 +66,19 @@ component otmfnt_rom
     );
 end component;
 
--- VGA screen constants
+-- VGA screen constants	
 constant horizontal_pixels			: natural:=896;
 constant vertical_pixels			: natural:=640;
-constant shadow_horizont			: natural:=120;
 constant shadow_vertical			: natural:=16;
 constant horizontal_size			: natural:=768;
 constant vertical_size				: natural:=608;
-constant screen_hor				: natural:=512;
-constant screen_vert				: natural:=384;
+constant screen_hor					: natural:=512;
+constant screen_vert					: natural:=384;
 constant ramka_ega_vert				: natural:=192;
 constant ramka_ega_goriz			: natural:=128;
-constant ssi_start				: natural:=891;
-constant ssi_stop				: natural:=38;
-constant hor_blank_start			: natural:=849;
+constant ssi_start					: natural:=848;
+constant ssi_stop						: natural:=38;
+constant hor_blank_start			: natural:=848;
 constant hor_blank_stop				: natural:=73;
 
 signal	ym_counter				: std_logic_vector (4 downto 0):=b"00000";  
