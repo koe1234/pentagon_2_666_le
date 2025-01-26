@@ -75,8 +75,16 @@ bool finish = false;
 
 void interrupt(unsigned char input_bit)
 {
-unsigned char a;
-
+	unsigned char a;
+	
+	if(mouse) 
+	{
+		clr_clk;
+		T0CCR &= ~(1<<5); // disable interrupt on cap0[1] event
+		T0IR |= (1 << 5);
+		mouse_stop_timeout = 0;
+	}
+	
 	a = bit_counter-1;
 	if ((bit_counter==0) && (input_bit != 0)) keyboard_error = true; 
 	if ((bit_counter > 0) && (bit_counter < 9)) scan_code |= (input_bit << a);	
@@ -93,6 +101,7 @@ unsigned char a;
 		else 
 		{
 			bit_counter = 0; translate(scan_code);
+			if(mouse) {m_bit_counter = 0;  }
 		}
 	}
 }
@@ -130,85 +139,114 @@ bool mouse_data_transmit(unsigned char data)
 {
 bool answer;
 	
-	//p1.25 - m_clk_o => out
-	//p1.29 - m_data_o => out
 	mouse_write_error = 0;	
 	ps2_transmit_flag0 = 1;	
 	ps2_parity_num = 0;	
-	clr_clk; 	
-	clr_data; 
+	m_bit_counter = 0;
+	clr_clk; // clk --|__	
+	clr_data; // data --|__		
 	ps2_transmit_flag1 = 0; 
-	while (ps2_transmit_flag1 < ps2_transmit_delay) {};
-	set_clk; 
+	while (ps2_transmit_flag1 < ps2_transmit_delay) clr_clk;
+	set_clk; // clk __|--
 	mouse_data = data;
 	mouse_answer_timeout = 0;
-	while ((ps2_transmit_flag0==1) && (mouse_answer_timeout != 50)) {};
+	while ((ps2_transmit_flag0==1) && (mouse_answer_timeout != 50)) {antiopt++;};
 	if(mouse_answer_timeout == 50) mouse = 0;
 	mouse_last_data = 0;
 	mouse_answer_timeout = 0;
-	while ((mouse_last_data != 0xFA) && (mouse_answer_timeout != 50)) {};
-	if (mouse_last_data == 0xFA) answer = 0;
-	else answer = 1;
-	while(mouse_answer_timeout != 50) {};
+	while ((mouse_last_data != 0xFA) && (mouse_answer_timeout != 50)) {antiopt++;};
+	if (mouse_last_data == 0xFA) answer = 1;
+	else answer = 0;
+	while(mouse_answer_timeout != 50) {antiopt++;};
 	
 return answer;	
 }
 
 void mouse_transaction(void)
 {
-unsigned char read_data_bit;	
-
-	//!ps2_transmit_flag0: 1 => to mouse; 0 => from mouse
+	unsigned char read_data_bit;	
+	
+	if(mouse)
+	{
+		FIO1SET	|= (1 << 24); // clk --|__
+		T0CCR &= ~(1<<2); // disable interrupt on cap0[1] event
+		T0IR |= (1 << 4);
+		keyboard_stop_timeout = 0;
+	}
+	
 	if (!ps2_transmit_flag0)
 	{
 		m_timeout=0;
-		read_bit; 
+		read_bit; //	 read_data_bit = ~(FIO1PIN >> 28) & 1;
 		if ((!m_bit_counter) & read_data_bit)	mouse_read_error = 1;
-		if ((m_bit_counter > 0) && (m_bit_counter < 9)) m_code |= read_data_bit << (m_bit_counter - 1);	
+		if ((m_bit_counter > 0) && (m_bit_counter < 9)) 
+		{
+			m_code |= read_data_bit << (m_bit_counter - 1);	
+			if (read_data_bit) ps2_parity_num++;
+		}
+		
+		if(m_bit_counter == 9)
+		{
+			if(read_data_bit) ps2_parity_num++;
+			ps2_parity_num++; // stop bit
+			if(ps2_parity_num & 1)
+			{
+				mouse_read_error = 1;
+			}		
+		}
 		if (m_bit_counter != 10) m_bit_counter++;
 		else
 		{ 
 			if (!read_data_bit) mouse_read_error = 1;
-			else 
-			{
-				m_bit_counter = 0; m_parser(m_code); mouse_last_data= m_code; m_code = 0;
-			}
+			ps2_parity_num = 0; m_bit_counter = 0;
+			if(mouse)
+				{
+					bit_counter = 0;
+				}
+			if (mouse_read_error) m_code = 0;
+			
+				 m_parser(m_code); mouse_last_data = m_code; m_code = 0;
 		}
 	}
 	else
 	{
 		m_timeout=0;
+		// Смысл бита чётности - сделать так, чтобы кол-во единиц в посылке
+		// (с учётом этого бита) было чётным. 	
 		if ((m_bit_counter==0) || (m_bit_counter==11)) read_bit; //read_data_bit = ~(FIO1PIN >> 28) & 1;
 		if ((!m_bit_counter) & read_data_bit) mouse_write_error = 1;
 		if ((m_bit_counter > 0) && (m_bit_counter < 9))
 		{
 			if((mouse_data >> (m_bit_counter -1)) & 1) 
 			{
-				set_data_bit; 
+				set_data_bit;
 				ps2_parity_num++;
 			}
-			else clear_data_bit; 
+			else clear_data_bit;
 		}
 		if (m_bit_counter == 9)
 		{
 			if (ps2_parity_num & 1) clear_data_bit 
-			else set_data_bit; 
+			else set_data_bit;
 		}
-		if (m_bit_counter == 10) set_data_bit; 
+		if (m_bit_counter == 10) set_data_bit;  
 		if (m_bit_counter < 11) m_bit_counter++;
 		else
-		{
+		{	
+			ps2_parity_num = 0;
 			ps2_transmit_flag0 = 0; m_bit_counter = 0; 
 			if (read_data_bit) mouse_write_error = 1 ;
+				if(mouse)
+				{
+					bit_counter = 0;
+				}
 		}
-	} 
+	}  
 }	
 
 char m_parser(char mc)
 {
-	if(mouse)
-	{
-		if (!m_byte_number & ((mc >> 3) & 1))
+	if (!m_byte_number & ((mc >> 3) & 1))
 		{
 			m_byte_number++; y_s = (mc >> 5) & 1; x_s = (mc >> 4) & 1; m_b = (m_b & 0xf0) + (~mc & 7); return 0;
 		}
@@ -216,10 +254,11 @@ char m_parser(char mc)
 		if (m_byte_number == 1) 
 		{
 			m_byte_number++; 
-			m_x += mc;	return 0;
+			m_x += mc;	
+			return 0;
 		}
 		if (m_byte_number == 2)
-		{ 
+		{
 			if(!mouse_wheel) {m_byte_number=0; myshko_flag = true;} else m_byte_number++; 
 			m_y += mc;	
 			return 0;
@@ -228,27 +267,22 @@ char m_parser(char mc)
 		{
 			m_byte_number=0;  myshko_flag = true; m_b += ((mc<<4) & 0xF0); return 0;
 		}
-	}
-	else
-	{
-		m_x = 0xff; m_y = 0xff; m_b = 0xff;
-	} 
-return 0;
+	new_byte_timeout = 0;
+	return 0;
 } 
  
 bool mouse_setup(void)
 {
 bool mouse_ok = 0;
-
+mouse_ok = mouse_data_transmit(0xff);
+	mouse_answer_timeout = 0;	
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
 	mouse_ok = mouse_data_transmit(0xff);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
 	mouse_ok = mouse_data_transmit(0xff);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
-	mouse_ok = mouse_data_transmit(0xff);
-	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
 	mouse_ok = mouse_data_transmit(0xf3);	
 	mouse_ok = mouse_data_transmit(0xc8);
 	mouse_ok = mouse_data_transmit(0xf3);
@@ -257,12 +291,15 @@ bool mouse_ok = 0;
 	mouse_ok = mouse_data_transmit(0x50);
 	mouse_ok = mouse_data_transmit(0xf2);
 	mouse_answer_timeout = 0;	
-	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! wait 1 second for a response from the mouse
+	while (mouse_answer_timeout != mouse_answer_timeout_const) {};	// !!! ответа от мышки надо ждать не менее 1 секунды!
 	if(mouse_last_data ==0x03) mouse_wheel = 1; 
 	else mouse_wheel = 0; 
 	mouse_ok = mouse_data_transmit(0xe6);
-	mouse_ok = mouse_data_transmit(0xf3);
-	mouse_ok = mouse_data_transmit(0x64);
-	mouse_ok = mouse_data_transmit(0xf4);	
+	mouse_ok = mouse_data_transmit(0xea);
+	mouse_ok = mouse_data_transmit(0xf6);
+	mouse_ok = mouse_data_transmit(0xf3);	
+	mouse_ok = mouse_data_transmit(0xc8);
+	mouse_ok = mouse_data_transmit(0xf4);
+	new_byte_timeout = 0;
 return mouse_ok;
 }	
