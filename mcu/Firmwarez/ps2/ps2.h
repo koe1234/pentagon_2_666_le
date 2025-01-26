@@ -73,6 +73,10 @@ void obrabotka(unsigned char scode);
 void interrupt(unsigned char input_bit);
 void reset_error(void);
 bool mouse_setup(void);
+volatile unsigned char new_byte_timeout = 0;
+volatile unsigned char mouse_stop_timeout = 10;
+volatile unsigned char keyboard_stop_timeout = 10;
+volatile unsigned char antiopt = 0;
 
 extern volatile unsigned int timeout;
 extern void additional_action(unsigned char unpush_scuko, unsigned char scode);
