@@ -24,15 +24,16 @@ void system_cycle(void)
 		if((timeout == error_timeout) && keyboard_error) reset_error(); 
 		if(mouse_read_error || mouse_write_error) mouse_restart(); 
 		in_l = in_l_measure(); in_r = in_r_measure();
-		if(condition_3)
-		{
-			myshko_flag = false; upload_data();
-		} 
-	}
+		
+	}	
+	if(condition_3)
+	{
+		myshko_flag = false; upload_data();
+	} 
+	
 	if(condition_4)
 	{
 		cycle_counter++;
-	
 	}
 	if(condition_5) { cycle_counter++;  } 
 	if(condition_6) { cycle_counter++; upload_data(); }			
@@ -446,15 +447,15 @@ unsigned int read, index;
 /////////////////////// interrupts ////////////////////////////////////
 void timer0_irq(void) __irq
 {
-// 50 Hz interrupts + PS2 events interrupts
-	
+// прерывания от таймера 0 - 50 Гц + события ps2
+
 	if ((T0IR >> 4) & 1)
 	{
 		T0IR |= (1 << 4); timeout = 0; if(!keyboard_error) interrupt(~(FIO1PIN >> 23) & 1);
 	}
 	if ((T0IR >> 5) & 1) 
 	{
-		T0IR |= (1 << 5); mouse_transaction(); // mouse interrupt
+		T0IR |= (1 << 5); mouse_transaction(); // прерывание от мышки
 	} 
 	if (T0IR & 1) 
 	{
@@ -469,13 +470,20 @@ void timer0_irq(void) __irq
 
 void timer1_irq(void) __irq
 {
-// 20 kHz (50 us)
+// Прерывания от timer1 20 кГц (50 мкс)
 static uint32_t div10;
 
 	led0_on(); led0_off();
 	T1IR |= 1;
-	ps2_transmit_flag1++;
-	mouse_answer_timeout++;
+	if(ps2_transmit_flag1 < ps2_transmit_delay) ps2_transmit_flag1++;
+	if(mouse_answer_timeout < 20000) mouse_answer_timeout++;
+	if(mouse_stop_timeout < 10) mouse_stop_timeout++; 
+	if(mouse_stop_timeout == 9) {FIO1CLR	|= (1 << 25);   T0CCR |= (1<<5); };//T0IR |= (1 << 5);m_bit_counter = 0;
+	if(keyboard_stop_timeout < 10) keyboard_stop_timeout++;   
+	if(keyboard_stop_timeout == 9) {FIO1CLR	|= (1 << 24);  T0CCR |= (1<<2);   };//T0IR |= (1<<4);bit_counter = 0;
+	
+	if(new_byte_timeout < 101) new_byte_timeout++;
+	if(new_byte_timeout == 100) m_byte_number = 0;
 	fpga_timing++;
 	
 	Timer_div++;
