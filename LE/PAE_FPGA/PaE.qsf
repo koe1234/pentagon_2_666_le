@@ -1,0 +1,518 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2011 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Full Version
+# Date created = 21:54:55  April 28, 2021
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PaE_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2011 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Full Version
+# Date created = 23:33:04  August 07, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PaE_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2011 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Full Version
+# Date created = 16:35:01  October 11, 2016
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PaE_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+# Copyright (C) 1991-2007 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		PaE_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+set_global_assignment -name DEVICE EP2C8Q208C8
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name TOP_LEVEL_ENTITY PaE
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 7.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:15:23  JULY 08, 2009"
+set_global_assignment -name LAST_QUARTUS_VERSION "11.0 SP1"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name CYCLONEII_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name GENERATE_RBF_FILE ON
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED WITH WEAK PULL-UP"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_23 -to clk
+set_location_assignment PIN_185 -to blk0_d[7]
+set_location_assignment PIN_188 -to blk0_d[6]
+set_location_assignment PIN_191 -to blk0_d[5]
+set_location_assignment PIN_193 -to blk0_d[4]
+set_location_assignment PIN_195 -to blk0_d[3]
+set_location_assignment PIN_192 -to blk0_d[2]
+set_location_assignment PIN_189 -to blk0_d[1]
+set_location_assignment PIN_187 -to blk0_d[0]
+set_location_assignment PIN_24 -to i2c_scl
+set_location_assignment PIN_47 -to i2c_sda
+set_location_assignment PIN_45 -to ksi
+set_location_assignment PIN_181 -to oe_blk0chp0
+set_location_assignment PIN_182 -to oe_blk0chp1
+set_location_assignment PIN_169 -to r_adr[18]
+set_location_assignment PIN_171 -to r_adr[17]
+set_location_assignment PIN_175 -to r_adr[16]
+set_location_assignment PIN_179 -to r_adr[15]
+set_location_assignment PIN_197 -to r_adr[14]
+set_location_assignment PIN_199 -to r_adr[13]
+set_location_assignment PIN_201 -to r_adr[12]
+set_location_assignment PIN_205 -to r_adr[11]
+set_location_assignment PIN_207 -to r_adr[10]
+set_location_assignment PIN_1 -to r_adr[9]
+set_location_assignment PIN_208 -to r_adr[8]
+set_location_assignment PIN_206 -to r_adr[7]
+set_location_assignment PIN_203 -to r_adr[6]
+set_location_assignment PIN_200 -to r_adr[5]
+set_location_assignment PIN_180 -to r_adr[4]
+set_location_assignment PIN_176 -to r_adr[3]
+set_location_assignment PIN_173 -to r_adr[2]
+set_location_assignment PIN_170 -to r_adr[1]
+set_location_assignment PIN_168 -to r_adr[0]
+set_location_assignment PIN_31 -to snd[7]
+set_location_assignment PIN_33 -to snd[6]
+set_location_assignment PIN_34 -to snd[5]
+set_location_assignment PIN_35 -to snd[4]
+set_location_assignment PIN_13 -to snd[3]
+set_location_assignment PIN_14 -to snd[2]
+set_location_assignment PIN_15 -to snd[1]
+set_location_assignment PIN_30 -to snd[0]
+set_location_assignment PIN_46 -to ssi
+set_location_assignment PIN_11 -to str_l
+set_location_assignment PIN_12 -to str_r
+set_location_assignment PIN_56 -to vid_b[4]
+set_location_assignment PIN_57 -to vid_b[3]
+set_location_assignment PIN_58 -to vid_b[2]
+set_location_assignment PIN_63 -to vid_b[1]
+set_location_assignment PIN_61 -to vid_b[0]
+set_location_assignment PIN_60 -to vid_g[4]
+set_location_assignment PIN_59 -to vid_g[3]
+set_location_assignment PIN_64 -to vid_g[2]
+set_location_assignment PIN_67 -to vid_g[1]
+set_location_assignment PIN_68 -to vid_g[0]
+set_location_assignment PIN_69 -to vid_r[4]
+set_location_assignment PIN_75 -to vid_r[3]
+set_location_assignment PIN_74 -to vid_r[2]
+set_location_assignment PIN_72 -to vid_r[1]
+set_location_assignment PIN_70 -to vid_r[0]
+set_location_assignment PIN_198 -to we_blk0chp0
+set_location_assignment PIN_2 -to we_blk0chp1
+set_location_assignment PIN_104 -to fpga_clk_output
+set_location_assignment PIN_97 -to fpga_mreq_output
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name DISABLE_OCP_HW_EVAL ON
+set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name AUTO_RAM_RECOGNITION ON
+set_global_assignment -name AUTO_ROM_RECOGNITION ON
+set_global_assignment -name AUTO_OPEN_DRAIN_PINS OFF
+set_global_assignment -name HDL_MESSAGE_LEVEL LEVEL1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS MAXIMUM
+set_location_assignment PIN_146 -to fpga_a[15]
+set_location_assignment PIN_141 -to fpga_a[14]
+set_location_assignment PIN_144 -to fpga_a[13]
+set_location_assignment PIN_145 -to fpga_a[12]
+set_location_assignment PIN_82 -to fpga_a[11]
+set_location_assignment PIN_84 -to fpga_a[10]
+set_location_assignment PIN_76 -to fpga_a[9]
+set_location_assignment PIN_77 -to fpga_a[8]
+set_location_assignment PIN_87 -to fpga_a[7]
+set_location_assignment PIN_81 -to fpga_a[6]
+set_location_assignment PIN_86 -to fpga_a[5]
+set_location_assignment PIN_80 -to fpga_a[4]
+set_location_assignment PIN_137 -to fpga_a[3]
+set_location_assignment PIN_138 -to fpga_a[2]
+set_location_assignment PIN_139 -to fpga_a[1]
+set_location_assignment PIN_143 -to fpga_a[0]
+set_location_assignment PIN_94 -to fpga_busack_output
+set_location_assignment PIN_92 -to fpga_halt_output
+set_location_assignment PIN_90 -to fpga_iorq_output
+set_location_assignment PIN_95 -to fpga_m1_output
+set_location_assignment PIN_96 -to fpga_rd_output
+set_location_assignment PIN_88 -to fpga_rfsh_output
+set_location_assignment PIN_89 -to fpga_wr_output
+set_global_assignment -name CYCLONEII_M4K_COMPATIBILITY OFF
+set_global_assignment -name OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING OFF
+set_global_assignment -name AUTO_PACKED_REGISTERS_STRATIXII NORMAL
+set_global_assignment -name AUTO_DELAY_CHAINS ON
+set_global_assignment -name AUTO_MERGE_PLLS OFF
+set_global_assignment -name AUTO_GLOBAL_CLOCK ON
+set_global_assignment -name AUTO_GLOBAL_REGISTER_CONTROLS ON
+set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS ON
+set_global_assignment -name ALLOW_POWER_UP_DONT_CARE ON
+set_global_assignment -name MUX_RESTRUCTURE OFF
+set_global_assignment -name EXTRACT_VERILOG_STATE_MACHINES OFF
+set_global_assignment -name EXTRACT_VHDL_STATE_MACHINES OFF
+set_global_assignment -name DSP_BLOCK_BALANCING OFF
+set_global_assignment -name NOT_GATE_PUSH_BACK OFF
+set_global_assignment -name REMOVE_DUPLICATE_REGISTERS ON
+set_global_assignment -name IGNORE_SOFT_BUFFERS OFF
+set_global_assignment -name AUTO_CARRY_CHAINS ON
+set_global_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION AUTO
+set_global_assignment -name AUTO_CLOCK_ENABLE_RECOGNITION ON
+set_global_assignment -name ALLOW_SYNCH_CTRL_USAGE ON
+set_global_assignment -name SYNTH_CLOCK_MUX_PROTECTION ON
+set_location_assignment PIN_117 -to fpga_d[7]
+set_location_assignment PIN_113 -to fpga_d[6]
+set_location_assignment PIN_112 -to fpga_d[5]
+set_location_assignment PIN_108 -to fpga_d[4]
+set_location_assignment PIN_110 -to fpga_d[3]
+set_location_assignment PIN_114 -to fpga_d[2]
+set_location_assignment PIN_115 -to fpga_d[1]
+set_location_assignment PIN_116 -to fpga_d[0]
+set_location_assignment PIN_152 -to fpga_ebl
+set_location_assignment PIN_130 -to fpga_io0
+set_location_assignment PIN_128 -to fpga_io1
+set_location_assignment PIN_103 -to fpga_io2
+set_location_assignment PIN_151 -to fpga_ior
+set_location_assignment PIN_147 -to fpga_iow
+set_location_assignment PIN_149 -to fpga_rdh
+set_location_assignment PIN_150 -to fpga_wrh
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_location_assignment PIN_127 -to dbusoe
+set_location_assignment PIN_118 -to fpga_dir
+set_location_assignment PIN_142 -to zetneg_oe
+set_location_assignment PIN_37 -to sd_clk
+set_location_assignment PIN_39 -to sd_cs
+set_location_assignment PIN_40 -to sd_datain
+set_location_assignment PIN_41 -to sd_dataout
+set_location_assignment PIN_165 -to oe_blk1chp0
+set_location_assignment PIN_164 -to oe_blk1chp1
+set_location_assignment PIN_3 -to we_blk1chp0
+set_location_assignment PIN_4 -to we_blk1chp1
+set_global_assignment -name TPD_REQUIREMENT "5 ns"
+set_global_assignment -name TSU_REQUIREMENT "5 ns"
+set_global_assignment -name TCO_REQUIREMENT "5 ns"
+set_global_assignment -name TH_REQUIREMENT "5 ns"
+set_global_assignment -name FMAX_REQUIREMENT "200 MHz"
+set_global_assignment -name REMOVE_REDUNDANT_LOGIC_CELLS ON
+set_global_assignment -name FORCE_SYNCH_CLEAR ON
+set_global_assignment -name AUTO_RAM_TO_LCELL_CONVERSION ON
+set_global_assignment -name AUTO_RESOURCE_SHARING ON
+set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
+set_global_assignment -name ALLOW_ANY_ROM_SIZE_FOR_RECOGNITION ON
+set_global_assignment -name ALLOW_ANY_SHIFT_REGISTER_SIZE_FOR_RECOGNITION ON
+set_location_assignment PIN_163 -to blk1_d[7]
+set_location_assignment PIN_161 -to blk1_d[6]
+set_location_assignment PIN_10 -to blk1_d[5]
+set_location_assignment PIN_8 -to blk1_d[4]
+set_location_assignment PIN_5 -to blk1_d[3]
+set_location_assignment PIN_6 -to blk1_d[2]
+set_location_assignment PIN_160 -to blk1_d[1]
+set_location_assignment PIN_162 -to blk1_d[0]
+set_location_assignment PIN_133 -to fpga_busrq_input
+set_location_assignment PIN_99 -to fpga_csr_output
+set_location_assignment PIN_106 -to fpga_f_output
+set_location_assignment PIN_129 -to fpga_int_input
+set_location_assignment PIN_107 -to fpga_int_output
+set_location_assignment PIN_134 -to fpga_nmi_input
+set_location_assignment PIN_135 -to fpga_rdrom_input
+set_location_assignment PIN_132 -to fpga_res_input
+set_location_assignment PIN_102 -to fpga_rs_in
+set_location_assignment PIN_101 -to fpga_rs_output
+set_location_assignment PIN_131 -to fpga_wait_input
+set_global_assignment -name LL_ORIGIN X1_Y1 -section_id ram
+set_global_assignment -name LL_HEIGHT 1 -section_id ram
+set_global_assignment -name LL_WIDTH 1 -section_id ram
+set_global_assignment -name LL_RESERVED OFF -section_id ram
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id ram
+set_global_assignment -name LL_AUTO_SIZE OFF -section_id ram
+set_global_assignment -name LL_STATE LOCKED -section_id ram
+set_instance_assignment -name FAST_OUTPUT_ENABLE_REGISTER ON -to ram
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to ram
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to ram
+set_instance_assignment -name PAD_TO_CORE_DELAY 4 -to ram
+set_instance_assignment -name PAD_TO_INPUT_REGISTER_DELAY 4 -to ram
+set_instance_assignment -name MAX_DELAY "6 ns" -from * -to ram
+set_instance_assignment -name CLOCK_TO_OUTPUT_DELAY 4 -to ram
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
+set_instance_assignment -name MAX_CLOCK_ARRIVAL_SKEW "6 ns" -from * -to ram
+set_instance_assignment -name MAX_DATA_ARRIVAL_SKEW "6 ns" -from * -to ram
+set_instance_assignment -name MIN_DELAY "5 ns" -from * -to ram
+set_global_assignment -name FIT_ATTEMPTS_TO_SKIP 1
+set_global_assignment -name ENABLE_BUS_HOLD_CIRCUITRY OFF
+set_global_assignment -name AUTO_GLOBAL_MEMORY_CONTROLS ON
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name LL_ENABLED ON -section_id ram
+set_global_assignment -name LL_SECURITY_ROUTING_INTERFACE OFF -section_id ram
+set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING OFF
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_MAP_LOGIC_TO_MEMORY_FOR_AREA ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_EFFORT EXTRA
+set_global_assignment -name STRATIX_CARRY_CHAIN_LENGTH 35
+set_global_assignment -name MISC_FILE "C:/Documents and Settings/Администратор.VISTA/Рабочий стол/Project 081112/PAE_FPGA/PaE.dpf"
+set_location_assignment PIN_105 -to fpga_dos_output
+set_global_assignment -name MISC_FILE "C:/Documents and Settings/Администратор/Рабочий стол/project 301112/PAE_FPGA/PaE.dpf"
+set_global_assignment -name MISC_FILE "C:/Documents and Settings/Администратор.VISTA/Рабочий стол/project 021212/PAE_FPGA/PaE.dpf"
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_IGNORE_IO_BANK_SECURITY_CONSTRAINT OFF -section_id ram
+set_global_assignment -name LL_PR_REGION OFF -section_id ram
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS OFF
+set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL OFF
+set_global_assignment -name SEED 2
+set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC_FOR_AREA ON
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS OFF
+set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS "EXTRA EFFORT"
+set_global_assignment -name SYNCHRONIZATION_REGISTER_CHAIN_LENGTH 8
+set_global_assignment -name ENABLE_DA_RULE "A109, A110"
+set_global_assignment -name DISABLE_DA_RULE "C101, C102, C103, C104, C105, C106, R101, R102, R103, R104, R105, T101, T102, A101, A102, A103, A104, A105, A106, A107, A108, S101, S102, S103, S104, D101, D102, D103, M101, M102, M103, M104, M105"
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER i2c_scl -section_id i2c
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER i2c_sda -section_id i2c
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER we_blk0chp0 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER we_blk0chp1 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER we_blk1chp0 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER we_blk1chp1 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER oe_blk0chp0 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER oe_blk0chp1 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER oe_blk1chp0 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER oe_blk1chp1 -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[0] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[1] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[2] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[3] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[4] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[5] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[6] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk0_d[7] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[1] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[0] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[2] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[3] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[4] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[5] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[6] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[7] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[8] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[9] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[10] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[11] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[12] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[13] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[14] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[15] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[16] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[18] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER r_adr[17] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[0] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[1] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[2] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[3] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[4] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[5] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[6] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER blk1_d[7] -section_id ram
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[0] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[1] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[2] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[3] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[4] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[5] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[6] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER snd[7] -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER str_l -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER str_r -section_id sound
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER sd_clk -section_id spi
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER sd_cs -section_id spi
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER sd_datain -section_id spi
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER sd_dataout -section_id spi
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_b[0] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_b[1] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_b[2] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_b[3] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_b[4] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_g[0] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_g[1] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_g[2] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_g[3] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_g[4] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_r[0] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_r[1] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_r[2] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_r[3] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER vid_r[4] -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER ssi -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER ksi -section_id video
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER dbusoe -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[0] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[1] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[2] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[3] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[4] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[5] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[6] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[7] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[8] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[9] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[10] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[11] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[12] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[13] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[14] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_a[15] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_busack_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_clk_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[0] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[1] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[2] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[3] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[4] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[5] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[6] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_d[7] -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_dir -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_halt_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_iorq_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_m1_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_mreq_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_rd_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_rfsh_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER fpga_wr_output -section_id zxbus
+set_global_assignment -name ASSIGNMENT_GROUP_MEMBER zetneg_oe -section_id zxbus
+set_global_assignment -name VHDL_FILE ../../common/uart.vhd
+set_global_assignment -name VHDL_FILE ../../common/ram/ram_pollitra.vhd
+set_global_assignment -name VHDL_FILE ../../common/ram/ram_clk_phase.vhd
+set_global_assignment -name VHDL_FILE ../../common/betadisk.vhd
+set_global_assignment -name VHDL_FILE ../../common/textmode.vhd
+set_global_assignment -name VHDL_FILE ../../common/zx_main.vhd
+set_global_assignment -name VHDL_FILE ../../common/ram/ram_textbuffer.VHD
+set_global_assignment -name VHDL_FILE ../../common/ram/ram_border.VHD
+set_global_assignment -name VHDL_FILE ../../common/YM2149/YM2149_linmix.vhd
+set_global_assignment -name VHDL_FILE ../../common/T80/T80a.vhd
+set_global_assignment -name VHDL_FILE ../../common/T80/T80_Reg.vhd
+set_global_assignment -name VHDL_FILE ../../common/T80/T80_Pack.vhd
+set_global_assignment -name VHDL_FILE ../../common/T80/T80_MCode.vhd
+set_global_assignment -name VHDL_FILE ../../common/T80/T80_ALU.VHD
+set_global_assignment -name VHDL_FILE ../../common/T80/T80.VHD
+set_global_assignment -name VHDL_FILE ../../common/ram/ram_32.VHD
+set_global_assignment -name VHDL_FILE ../../common/ram/RAM_cmos.VHD
+set_global_assignment -name VHDL_FILE ../../common/fnt_rom.vhd
+set_global_assignment -name VHDL_FILE ../../common/otmfnt_rom.vhd
+set_global_assignment -name VHDL_FILE PLL1.VHD
+set_global_assignment -name VHDL_FILE PaE.vhd
+set_location_assignment PIN_28 -to uart_cts_i
+set_location_assignment PIN_44 -to uart_rts_o
+set_location_assignment PIN_27 -to uart_rx_i
+set_location_assignment PIN_43 -to uart_tx_o
+set_location_assignment PIN_48 -to led
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
